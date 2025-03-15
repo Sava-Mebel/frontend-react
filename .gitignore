@@ -1,0 +1,51 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build directories
+dist/
+build/
+coverage/
+.storybook-out/
+
+# Webpack cache
+.cache/
+webpack-cache/
+*.cache/
+
+# Storybook
+.storybook/
+node_modules/.cache/storybook/
+
+# TypeScript
+*.tsbuildinfo
+
+# Redux Toolkit (если используется RTK Query)
+rtk-query-cache/
+
+# SCSS
+*.css.map
+*.scssc
+*.sassc
+
+# SCSS Modules
+*.module.css.map
+*.module.scss.map
+*.module.sass.map
+
+# React
+*.log
+*.gz
+*.br
