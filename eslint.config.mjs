@@ -35,7 +35,8 @@ export default [
       'prettier/prettier': 'error',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'react/react-in-jsx-scope': 'off',
-      "react/display-name": ["error", { "ignoreTranspilerName": true }]
+      "react/display-name": ["error", { "ignoreTranspilerName": true }],
+      "no-unused-vars": "off",
     },
   },
 ];
