@@ -1,0 +1,8 @@
+@use "reset";
+@use "variables/global";
+@use "theme/normal";
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
