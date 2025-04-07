@@ -1,5 +1,7 @@
 import { memo } from 'react';
+
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Footer } from 'widgets/footer';
 
 interface MainPageProps {
   className?: string;
@@ -8,7 +10,12 @@ interface MainPageProps {
 const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
 
-  return <div className={classNames('MainPage', {}, [className])}>MAIN PAGE</div>;
+  return (
+    <div className={classNames('MainPage', {}, [className])}>
+      <main style={{ minHeight: 'calc(100vh - 334px)' }}>MAIN PAGE</main>
+      <Footer />
+    </div>
+  );
 });
 
 MainPage.displayName = 'MainPage';
