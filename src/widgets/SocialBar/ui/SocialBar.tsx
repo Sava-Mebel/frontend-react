@@ -1,8 +1,10 @@
 import { memo, useMemo } from 'react';
+
 import { classNames } from 'shared/lib/classNames/classNames';
+
 import { SocialElementsList } from '../model/elements';
-import { SocialElement } from './SocialElement/SocialElement';
 import cls from './SocialBar.module.scss';
+import { SocialElement } from './SocialElement/SocialElement';
 
 interface SocialBarProps {
   className?: string;

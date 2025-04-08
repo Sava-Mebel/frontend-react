@@ -1,7 +1,9 @@
 import { memo } from 'react';
+
 import { classNames } from 'shared/lib/classNames/classNames';
-import { SocialBar } from 'widgets/SocialBar';
 import { Logotype } from 'shared/ui/Logotype/Logotype';
+import { SocialBar } from 'widgets/SocialBar';
+
 import cls from './Footer.module.scss';
 
 interface FooterProps {

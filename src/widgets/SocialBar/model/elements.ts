@@ -1,7 +1,8 @@
 import { JSX, SVGProps } from 'react';
-import YouTubeIcon from 'shared/assets/social/youtube.svg';
-import VkIcon from 'shared/assets/social/vk.svg';
+
 import InstagramIcon from 'shared/assets/social/instagram.svg';
+import VkIcon from 'shared/assets/social/vk.svg';
+import YouTubeIcon from 'shared/assets/social/youtube.svg';
 
 export type SocialElementType = {
   id: string;
