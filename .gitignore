@@ -26,7 +26,7 @@ webpack-cache/
 *.cache/
 
 # Storybook
-.storybook/
+config/storybook/
 node_modules/.cache/storybook/
 
 # TypeScript
@@ -49,3 +49,5 @@ rtk-query-cache/
 *.log
 *.gz
 *.br
+
+*storybook.log
