@@ -26,7 +26,6 @@ webpack-cache/
 *.cache/
 
 # Storybook
-config/storybook/
 node_modules/.cache/storybook/
 
 # TypeScript
