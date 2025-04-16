@@ -5,7 +5,7 @@ import { Button, ButtonTheme, ButtonSize } from './Button';
 const meta: Meta<typeof Button> = {
   title: 'shared/Button',
   component: Button,
-  tags: ['autodocs'], // для автогенерации описания
+  tags: ['autodocs'],
   argTypes: {
     theme: {
       control: 'select',

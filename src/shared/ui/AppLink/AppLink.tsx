@@ -1,32 +1,33 @@
 import { FC } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 
+import { AppLinkTheme, AppLinkVariant } from './models/const/const';
+import { AppLinkProps, ExternalLinkProps, RouteLinkProps } from './models/types/types';
 import cls from './AppLink.module.scss';
 
-export enum AppLinkTheme {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  RED = 'red',
-}
-
-interface AppLinkProps extends LinkProps {
-  className?: string;
-  theme?: AppLinkTheme;
-}
-
 export const AppLink: FC<AppLinkProps> = (props) => {
-  const { to, className, children, theme = AppLinkTheme.PRIMARY, ...otherProps } = props;
+  const { className, theme = AppLinkTheme.PRIMARY, children, ...restProps } = props;
+
+  const linkClassName = classNames(cls.AppLink, {}, [className, cls[theme]]);
+
+  if (props.variant === AppLinkVariant.ROUTE) {
+    const { to, ...linkProps } = restProps as RouteLinkProps;
+
+    return (
+      <Link to={to} className={linkClassName} {...linkProps}>
+        {children}
+      </Link>
+    );
+  }
+
+  const { href, ...anchorProps } = restProps as ExternalLinkProps;
 
   return (
-    <Link
-      to={to}
-      className={classNames(cls.AppLink, { [cls[theme]]: true }, [className])}
-      {...otherProps}
-    >
+    <a href={href} className={linkClassName} {...anchorProps}>
       {children}
-    </Link>
+    </a>
   );
 };
 

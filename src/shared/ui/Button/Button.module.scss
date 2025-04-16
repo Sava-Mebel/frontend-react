@@ -1,3 +1,18 @@
-.Button {
+$bg-color: #C66F2B;
 
+.Button {
+  width: max-content;
+  min-height: 102px;
+  background-color: $bg-color;
+  border-radius: 10px;
+
+  color: #FFF;
+
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 50.5px; /* 315.625% */
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
 }

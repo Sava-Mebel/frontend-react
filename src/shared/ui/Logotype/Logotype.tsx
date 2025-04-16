@@ -1,7 +1,8 @@
 import { JSX, memo, SVGProps } from 'react';
-import { Link } from 'react-router-dom';
 
 import { classNames } from 'shared/lib/classNames/classNames';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppLinkVariant } from 'shared/ui/AppLink';
 
 import cls from './Logotype.module.scss';
 import LogoIcon from '../../assets/logo/Logotype.svg';
@@ -15,9 +16,14 @@ export const Logotype = memo((props: LogotypeProps) => {
   const { className, Logo = LogoIcon } = props;
 
   return (
-    <Link to={'/'} className={classNames(cls.Logotype, {}, [className])}>
+    <AppLink
+      variant={AppLinkVariant.ROUTE}
+      to={'/'}
+      className={classNames(cls.Logotype, {}, [className])}
+    >
       <Logo className={cls.logo} />
-    </Link>
+      <p className={cls.header}>производство мебели по индивидуальным размерам</p>
+    </AppLink>
   );
 });
 

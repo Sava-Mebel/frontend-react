@@ -5,4 +5,6 @@
 .app {
   width: 100%;
   min-height: 100vh;
+  background: url(http://localhost:3000/media/backgroundtest.png) no-repeat center center;
+  background-size: cover;
 }
