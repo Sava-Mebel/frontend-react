@@ -1,0 +1,26 @@
+$height: 82px;
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  min-height: $height;
+  padding: 32px 64px 8px 64px;
+}
+
+.phoneLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.phoneText {
+  color: #FFF;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+}
