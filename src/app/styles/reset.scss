@@ -1,0 +1,53 @@
+/* Обнуляем отступы и поля */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Убираем стили у списков */
+ul, ol {
+  list-style: none;
+}
+
+/* Обнуляем стили ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убираем стандартные стили кнопок и полей ввода */
+button, input, textarea {
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* Делаем изображения адаптивными */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Убираем стили заголовков, но сохраняем удобочитаемость */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/* Выравниваем поведение кнопок и ссылок */
+button {
+  cursor: pointer;
+}
+
+/* Убираем акцентировку в мобильных браузерах */
+*:focus {
+  outline: none;
+}
+
+/* Улучшаем рендеринг шрифтов */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

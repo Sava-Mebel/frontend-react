@@ -1,0 +1,22 @@
+.Logotype {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  width: 324px;
+  min-height: 52px;
+}
+
+.header {
+  width: 256px;
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 144.9%; /* 20.286px */
+  text-transform: uppercase;
+}
+
+.logo {
+  width: 32px;
+  height: 50px;
+}
