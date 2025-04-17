@@ -3,6 +3,8 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
+import  CopyWebpackPlugin from 'copy-webpack-plugin';
+import path from 'path';
 
 export function buildPlugins({
   paths,
@@ -34,6 +36,20 @@ export function buildPlugins({
       }),
     );
   }
+
+  plugins.push(
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../../public'),
+          to: paths.build,
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+        },
+      ],
+    })
+  );
 
   return plugins;
 }
