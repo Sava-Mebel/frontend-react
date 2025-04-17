@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Footer } from 'widgets/Footer';
@@ -11,10 +11,21 @@ interface MainPageProps {
 const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
 
+  useEffect(() => {
+    const selectorApp = document.querySelector('.app') as HTMLElement;
+
+    if (selectorApp) {
+      selectorApp.style.background = `url('/media/backgroundtest.png') no-repeat center center`;
+      selectorApp.style.backgroundSize = 'cover';
+    }
+  }, []);
+
   return (
     <div className={classNames('MainPage', {}, [className])}>
       <Header />
-      <main style={{ minHeight: 'calc(100vh - 334px)' }}>MAIN PAGE</main>
+      <main style={{ minHeight: 'calc(100vh - 272px - 92px)', overflowY: 'hidden' }}>
+        MAIN PAGE
+      </main>
       <Footer />
     </div>
   );

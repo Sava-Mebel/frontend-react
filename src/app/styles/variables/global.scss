@@ -1,5 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
+  overflow-y: hidden;
 }
 
 :root {
@@ -8,7 +9,7 @@ body {
   --pages-pd-rigth: 118px;
 
   // размеры
-  --header-height-pc: 50px;
-  --footer-height-pc: 274px;
+  --header-height-pc: 90px;
+  --footer-height-pc: 272px;
   --footer-height-mobile: 256px;
 }
