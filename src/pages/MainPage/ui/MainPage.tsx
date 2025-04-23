@@ -3,6 +3,7 @@ import { memo, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
+import { ToolCatalog } from 'widgets/ToolCatalog';
 
 interface MainPageProps {
   className?: string;
@@ -24,7 +25,7 @@ const MainPage = memo((props: MainPageProps) => {
     <div className={classNames('MainPage', {}, [className])}>
       <Header />
       <main style={{ minHeight: 'calc(100vh - 272px - 92px)', overflowY: 'hidden' }}>
-        MAIN PAGE
+        <ToolCatalog />
       </main>
       <Footer />
     </div>
