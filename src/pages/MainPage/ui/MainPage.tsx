@@ -16,7 +16,7 @@ const MainPage = memo((props: MainPageProps) => {
     const selectorApp = document.querySelector('.app') as HTMLElement;
 
     if (selectorApp) {
-      selectorApp.style.background = `url('/media/backgroundtest.png') no-repeat center center`;
+      selectorApp.style.background = `url('/media/kitchen.png') no-repeat center center`;
       selectorApp.style.backgroundSize = 'cover';
     }
   }, []);

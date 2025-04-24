@@ -5,6 +5,7 @@
 .app {
   width: 100%;
   min-height: 100vh;
-  //background: url('http://localhost:3000/media/backgroundtest.png') no-repeat center center;
+  background: #232323;
   background-size: cover;
+  transition: background 0.5s ease-in-out, background-size 0.5s ease-in-out;
 }
