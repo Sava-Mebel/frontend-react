@@ -1,0 +1,57 @@
+.ToolCatalog {
+  padding: 0 64px 0 64px;
+}
+
+.tool {
+  display: flex;
+  justify-content:  space-between;
+  gap: 10px;
+}
+
+.content {
+  width: 852px;
+  padding: 64px 0;
+  margin: 0 auto;
+  text-align: center;
+
+  & .header {
+    margin-bottom:  16px;
+    text-transform: uppercase;
+
+    & .title {
+      color: #FFF;
+      text-align: center;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      font-size: 55px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 60px; /* 109.091% */
+      letter-spacing: 2.75px;
+    }
+
+    & .subTitle {
+      color: #C96623;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 131.9%; /* 31.656px */
+    }
+  }
+
+  & .description {
+    color: #9D9D9D;
+    text-align: center;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 131.9%; /* 26.38px */
+  }
+
+  .btnInfo {
+    margin-top: 34px;
+    width: 300px;
+    height: 54px;
+  }
+}

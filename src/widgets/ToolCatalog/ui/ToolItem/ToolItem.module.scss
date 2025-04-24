@@ -1,0 +1,26 @@
+.ToolItem {
+  display:  flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: max-content;
+  height:  60px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.active {
+  background-color: #C96623;
+}
+
+.text {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 153.4%;
+  white-space: pre-line;
+}
