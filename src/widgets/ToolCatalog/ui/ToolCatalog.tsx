@@ -13,12 +13,14 @@ interface ToolCatalogProps {
 }
 
 export const ToolCatalog = ({ className }: ToolCatalogProps) => {
-  const [activeBackground, setActiveBackground] = useState('/media/kitchen.png');
+  const [activeItemId, setActiveItemId] = useState<number>(1);
+  const [activeBackground, setActiveBackground] = useState<string>('/media/kitchen.png');
   useAppBackground(activeBackground);
 
   const handleClick = (item: ToolItemType) => {
-    console.log(item.urlBg);
+    console.log(item);
     setActiveBackground(item.urlBg);
+    setActiveItemId(item.id);
   };
 
   return (
@@ -46,7 +48,12 @@ export const ToolCatalog = ({ className }: ToolCatalogProps) => {
 
       <div className={cls.tool}>
         {toolItemLists.map((item) => (
-          <ToolItem key={item.id} item={item} onClick={handleClick} />
+          <ToolItem
+            key={item.id}
+            item={item}
+            onClick={handleClick}
+            isActive={item.id === activeItemId}
+          />
         ))}
       </div>
     </section>
