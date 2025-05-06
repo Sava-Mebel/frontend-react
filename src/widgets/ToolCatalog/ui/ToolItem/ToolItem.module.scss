@@ -1,18 +1,46 @@
 .ToolItem {
-  display:  flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
   width: max-content;
-  height:  60px;
+  height: 60px;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
   padding: 10px;
+  transition: border 0.2s ease, opacity 0.2s ease;
+
+  &:not(.active):hover {
+    border-color: #C96623;
+    opacity: 1;
+
+    .text {
+      color: #C96623;
+    }
+
+    .icon {
+      fill: #C96623;
+    }
+  }
 }
 
 .active {
   background-color: #C96623;
+  border-color: #FFFFFF;
+
+  .text {
+    color: #FFFFFF;
+  }
+
+  .icon {
+    fill: #FFFFFF;
+  }
+
+  &:hover {
+    opacity: 1;
+    cursor: default;
+  }
 }
 
 .text {
@@ -23,4 +51,10 @@
   font-weight: 500;
   line-height: 153.4%;
   white-space: pre-line;
+  transition: color 0.2s ease;
+}
+
+.icon {
+  fill: #FFFFFF;
+  transition: fill 0.2s ease;
 }
