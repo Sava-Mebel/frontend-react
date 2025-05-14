@@ -2,11 +2,46 @@
 @use "variables/global";
 @use "theme/normal";
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .app {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100vh;
-  background: #232323;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  //height: 60px; /* или твоя высота */
+  z-index: 1000;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  //height: 40px; /* или твоя высота */
+  z-index: 1000;
+}
+
+main {
+  flex: 1;
+  padding-top: 106px; /* высота Header */
+  padding-bottom: 208px; /* высота Footer */
+  overflow: hidden;
   background-size: cover;
-  transition: background 0.5s ease-in-out, background-size 0.5s ease-in-out;
+  opacity: 0;
+  animation: fadeInBG 1.5s ease-in-out forwards;
   object-fit: cover;
+}
+
+@keyframes fadeInBG {
+  to { opacity: 1; }
 }

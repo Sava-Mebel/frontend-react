@@ -1,0 +1,90 @@
+$border-radius: 18px;
+$default-bg: #FCFCFC;
+$hover-bg: #FAF0E9;
+$hover-border: #C96623;
+$hover-text: #A15420;
+$top-pick-color: #9BC650;
+$client-pick-color: #F2B65F;
+$text-color: #333333;
+$white-color: #FFFFFF;
+
+.Card {
+  background: $default-bg;
+  border-radius: $border-radius;
+  border: 2px solid $default-bg;
+  position: relative;
+  max-width: 32%;
+  padding: 12px 12px 24px 12px;
+  transition: all 0.3s ease;
+  color: $text-color;
+
+  &:has(.TOP_PICK) {
+    border: 2px solid $top-pick-color;
+
+    &:hover {
+      border: 2px solid $top-pick-color;
+      background: #F5F9EE;
+      color: #546D28;
+    }
+  }
+
+  &:has(.CLIENT_PICK) {
+    border: 2px solid $client-pick-color;
+
+    &:hover {
+      border: 2px solid $hover-border;
+      background: $hover-bg;
+      color: $hover-text;
+    }
+  }
+
+  &:hover {
+    background: $hover-bg;
+    border: 2px solid $hover-border;
+    color: $hover-text;
+  }
+}
+
+.img {
+  border-radius: $border-radius;
+  width: 100%;
+  min-height: 480px;
+  object-fit: cover;
+}
+
+.badge {
+  border-radius: $border-radius;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  min-height: 50px;
+  max-width: max-content;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  color: var(--withe-color-base);
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  &.CLIENT_PICK {
+    background: $client-pick-color;
+  }
+
+  &.TOP_PICK {
+    background: $top-pick-color;
+  }
+}
+
+.badgeIcon {
+  margin-right: 12px;
+}
+
+.title {
+  margin-top: 30px;
+  color: inherit;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ButtonTheme, ButtonSize } from './Button';
+import { Button, ButtonTheme } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'shared/Button',
@@ -10,10 +10,6 @@ const meta: Meta<typeof Button> = {
     theme: {
       control: 'select',
       options: Object.values(ButtonTheme),
-    },
-    size: {
-      control: 'select',
-      options: Object.values(ButtonSize),
     },
     onClick: { action: 'clicked' },
   },
@@ -41,34 +37,5 @@ export const Disabled: Story = {
     children: 'Отключена',
     theme: ButtonTheme.OUTLINE,
     disabled: true,
-  },
-};
-
-export const Square: Story = {
-  args: {
-    children: '>',
-    theme: ButtonTheme.OUTLINE,
-    square: true,
-  },
-};
-
-export const SizeM: Story = {
-  args: {
-    children: 'Размер M',
-    size: ButtonSize.M,
-  },
-};
-
-export const SizeL: Story = {
-  args: {
-    children: 'Размер L',
-    size: ButtonSize.L,
-  },
-};
-
-export const SizeXL: Story = {
-  args: {
-    children: 'Размер XL',
-    size: ButtonSize.XL,
   },
 };

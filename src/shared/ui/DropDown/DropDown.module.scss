@@ -1,0 +1,42 @@
+.DropDown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--header-bg);
+}
+
+.dropdown {
+  width: 100vw;
+  height: auto; // больше не фиксированная
+  max-height: 300px; // ограничим по высоте, если нужно
+  overflow-x: auto; // скролл если ширина превышена
+  overflow-y: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--header-bg);
+  padding: 18px 5vw 18px 346px; // адаптивный отступ
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.dropdownList {
+  display: grid;
+  grid-auto-flow: column; // 👉 заполняем по колонкам
+  grid-template-rows: repeat(6, auto); // 👉 6 строк максимум в колонке
+  grid-auto-columns: 278px;
+  column-gap: 48px;
+  row-gap: 12px;
+  min-width: fit-content;
+}
+
+.catalogWrapper {
+  transition: color 0.2s, background-color 0.2s;
+  cursor: pointer;
+
+  &.active {
+    color: var(--orange-gold-color-base); // например, красный или жёлтый
+    background-color: rgba(255, 255, 255, 0.05); // мягкий фон, если нужно
+  }
+}
+

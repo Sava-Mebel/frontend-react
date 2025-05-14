@@ -1,64 +1,57 @@
-.Footer{
-  min-height: var(--footer-height-pc);
-  padding: 32px 64px;
+$padding: var(--pd-vertical-base) var(--pd-horizontal-base);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  &.blur {
-    background: rgba(40, 40, 40, 0.50);
-  }
-
-  &.dark {
-    background: #000;
-  }
+.Footer {
+  width: 100%;
 }
 
-.top {
+.advantagesList {
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: space-between;
+  gap: 18px;
+  background: var(--orange-gold-color-base);
+  height: calc(var(--footer-height) / 2);
+  padding: $padding;
+}
+
+.advantagesItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advantagesTitle {
+  color: var(--withe-color-base);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.advantagesIcon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-right: 18px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
 }
 
 .bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  & .typography  {
-    min-height: 20px;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.32px;
-  }
+  background: var(--footer-bg);
+  height: calc(var(--footer-height) / 2);
+  padding: $padding;
 }
 
-.menu {
+.logo {
+  max-height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  &__header {
-    color: #FFF;
-    font-family: "Helvetica Neue", serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: 0.36px;
-    text-transform: uppercase;
-  }
-  &__item {
-    color: #FFF;
-    font-family: "Helvetica Neue", serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: 0.36px;
-  }
+  align-items: center
 }

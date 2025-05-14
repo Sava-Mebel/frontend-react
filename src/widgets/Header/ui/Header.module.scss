@@ -1,26 +1,102 @@
-$height: 82px;
+$padding: var(--pd-vertical-base) var(--pd-horizontal-base);
 
 .Header {
+  //position: relative;
+  width: 100%;
+  background: var(--header-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  height: var(--header-height);
+  padding: $padding;
+}
+.nav {
   width: 100%;
-  min-height: $height;
-  padding: 32px 64px 8px 64px;
 }
 
-.phoneLink {
+.itemList {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
 }
 
-.phoneText {
-  color: #FFF;
-  font-size: 20px;
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  min-height: 300px;
+  background: var(--header-bg);
+  z-index: 100;
+  padding: 18px 5vw 18px 346px;
+}
+
+.dropdown {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, auto);
+  grid-template-columns: repeat(auto-fit, 278px); // Колонки по 278px
+  column-gap: 32px; // Отступ между колонками
+  row-gap: 8px;
+
+  .dropdownItem,
+  .dropdownLabel {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.3s ease forwards;
+  }
+
+  // Анимация с задержкой
+  .dropdownItem:nth-child(1) { animation-delay: 0s; }
+  .dropdownItem:nth-child(2) { animation-delay: 0.05s; }
+  .dropdownItem:nth-child(3) { animation-delay: 0.1s; }
+  .dropdownItem:nth-child(4) { animation-delay: 0.15s; }
+  .dropdownItem:nth-child(5) { animation-delay: 0.2s; }
+  .dropdownItem:nth-child(6) { animation-delay: 0.25s; }
+  .dropdownItem:nth-child(7) { animation-delay: 0.3s; }
+  .dropdownItem:nth-child(8) { animation-delay: 0.35s; }
+  .dropdownItem:nth-child(9) { animation-delay: 0.4s; }
+  .dropdownItem:nth-child(10) { animation-delay: 0.45s; }
+
+  .dropdownLabel {
+    font-weight: bold;
+    color: #555;
+    animation-delay: 0s;
+  }
+
+  .dropdownGroup {
+    display: contents;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.label {
+  color: #333;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  text-transform: uppercase;
+  transition: all 0.3s;
 }
+
+.label--active {
+  color: var(--orange-gold-color-base);
+  font-weight: 800;
+}
+
+.label--active--dimmed {
+  opacity: 0.5;
+}
+
+
+

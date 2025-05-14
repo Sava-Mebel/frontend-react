@@ -4,8 +4,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { AppLinkVariant } from 'shared/ui/AppLink';
 
-import cls from './Logotype.module.scss';
 import LogoIcon from '../../assets/logo/Logotype.svg';
+import cls from './Logotype.module.scss';
 
 interface LogotypeProps {
   className?: string;
@@ -22,7 +22,6 @@ export const Logotype = memo((props: LogotypeProps) => {
       className={classNames(cls.Logotype, {}, [className])}
     >
       <Logo className={cls.logo} />
-      <p className={cls.header}>производство мебели по индивидуальным размерам</p>
     </AppLink>
   );
 });

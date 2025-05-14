@@ -1,8 +1,8 @@
 import { JSX, SVGProps } from 'react';
 
-import InstagramIcon from 'shared/assets/social/instagram.svg';
 import VkIcon from 'shared/assets/social/vk.svg';
 import YouTubeIcon from 'shared/assets/social/youtube.svg';
+import TelegramIcon from 'shared/assets/social/tg.svg';
 
 export type SocialElementType = {
   id: string;
@@ -19,10 +19,10 @@ export const SocialElementsList: SocialElementType[] = [
     Icon: YouTubeIcon,
   },
   {
-    id: 'instagram',
+    id: 'telegram',
     path: 'https://example.com',
-    name: 'Instagram Icon',
-    Icon: InstagramIcon,
+    name: 'Telegram Icon',
+    Icon: TelegramIcon,
   },
   {
     id: 'vk',

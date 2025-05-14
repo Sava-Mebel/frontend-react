@@ -1,0 +1,55 @@
+.IntroSection {
+  width: 100%;
+  height: var(--height-container);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 90px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 40%;
+  padding: 36px 40px;
+  background: var(--withe-color-base);
+  border-radius: 18px;
+  gap: 24px;
+}
+
+.signature {
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.title {
+  color: var(--orange-gold-color-base);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+.subtitle {
+  color: #9D9D9D;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.link {
+  width: 100%;
+}
+
+.linkText {
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 50.5px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}

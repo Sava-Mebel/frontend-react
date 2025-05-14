@@ -1,23 +1,16 @@
-body {
-  font-family: 'Montserrat', sans-serif;
-  overflow-y: hidden;
-}
-
 :root {
   // отступы
-  --pages-pd-left: 118px;
-  --pages-pd-rigth: 118px;
+  --pd-horizontal-base: 90px;
+  --pd-vertical-base: 24px;
 
   // размеры
-  --header-height-pc: 90px;
-  --footer-height-pc: 272px;
-  --footer-height-mobile: 256px;
+  --header-height: 106px;
+  --footer-height: 208px;
+  --height-container: calc(100vh - var(--header-height) - var(--footer-height));
 
   // BASE COLORS
   --orange-gold-color-base: #C96623;
   --withe-color-base: #FFF;
-  --black-color-base: #444444;
-  --dark-khaki-color-base: #4A4A3C;
-  --cashmere-beige-colors-base: #E8DCCA;
-  --dusty-rose-colors-base: #D4B8B8;
+  --gray-3-color-base: #333;
+  --grey-4-color-base: #444;
 }

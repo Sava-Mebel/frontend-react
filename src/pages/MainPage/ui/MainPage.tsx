@@ -1,9 +1,6 @@
 import { memo, useEffect } from 'react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Footer } from 'widgets/Footer';
-import { Header } from 'widgets/Header';
-import { ToolCatalog } from 'widgets/ToolCatalog';
+import { IntroSection } from 'widgets/IntroSection';
 
 interface MainPageProps {
   className?: string;
@@ -13,22 +10,24 @@ const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
 
   useEffect(() => {
-    const selectorApp = document.querySelector('.app') as HTMLElement;
+    const selectorApp = document.querySelector('.app__main') as HTMLElement;
 
     if (selectorApp) {
-      selectorApp.style.background = `url('/media/kitchen.png') no-repeat center center`;
+      const originalBackground = selectorApp.style.background;
+      const originalBackgroundSize = selectorApp.style.backgroundSize;
+
+      selectorApp.style.background = `url('/media/background.png') no-repeat center center`;
       selectorApp.style.backgroundSize = 'cover';
+
+      return () => {
+        selectorApp.style.background = originalBackground;
+        selectorApp.style.backgroundSize = originalBackgroundSize;
+      }
     }
   }, []);
 
   return (
-    <div className={classNames('MainPage', {}, [className])}>
-      <Header />
-      <main style={{ minHeight: 'calc(100vh - 272px - 92px)', overflowY: 'hidden' }}>
-        <ToolCatalog />
-      </main>
-      <Footer />
-    </div>
+    <IntroSection />
   );
 });
 

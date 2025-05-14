@@ -10,6 +10,9 @@ import pluginUnusedImports from 'eslint-plugin-unused-imports';
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
+    globals: {
+      NodeJS: 'readonly',
+    },
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
       parser: tseslint.parser,

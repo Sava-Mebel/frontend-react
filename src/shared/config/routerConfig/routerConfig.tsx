@@ -4,16 +4,6 @@ import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { CatalogPage } from 'pages/CatalogPage';
 
-export enum CatalogCategoryRoutes {
-  KITCHEN = 'kitchen',
-  BEDROOM = 'bedroom',
-  HALLWAY = 'hallway',
-  LIVING_ROOM = 'living-room',
-  KIDS_ROOM = 'kids-room',
-  HOME_OFFICE = 'home-office',
-  WARDROBE = 'wardrobe',
-}
-
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
 };
@@ -29,7 +19,7 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
   [AppRoutes.CATALOG]: '/catalog',
-  [AppRoutes.CATALOG_CARD]: '/catalog/:category',
+  [AppRoutes.CATALOG_CARD]: '/catalog/:group_category',
 
   // LAST
   [AppRoutes.NOT_FOUND]: '*',

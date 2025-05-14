@@ -1,26 +1,27 @@
 $bg-color: var(--orange-gold-color-base);
-$text-color: var(--withe-color-base);
+$bg-color-hover: var(--withe-color-base);
 
+$text-color: var(--withe-color-base);
+$text-color-hover: var(--orange-gold-color-base);
 .Button {
   width: max-content;
-  height: 102px;
+  min-height: 24px;
+  padding: 12px;
   background-color: $bg-color;
   border-radius: 10px;
   opacity: 1;
-  transition: opacity 0.5s;
+  transition: all 0.6s ease-in-out;
 
-  color: #FFF;
-
-  text-align: center;
-  font-size: 16px;
+  color: var(--withe-color-base);
+  font-size: 20px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 50.5px; /* 315.625% */
-  letter-spacing: 0.48px;
-  text-transform: uppercase;
+  font-weight: 600;
+  line-height: normal;
 
   &:hover {
-    opacity: 0.6;
+    background: $bg-color-hover;
+    color: $text-color-hover;
+    border: 1px solid $text-color-hover;
   }
 }
 
