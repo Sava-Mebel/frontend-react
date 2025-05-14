@@ -22,6 +22,10 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
   align-items: center;
 }
 
+.item {
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
 .dropdown {
   position: absolute;
   top: 100%;
@@ -46,6 +50,8 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
     opacity: 0;
     transform: translateY(10px);
     animation: fadeInUp 0.3s ease forwards;
+
+
   }
 
   // Анимация с задержкой
@@ -78,8 +84,6 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
   }
 }
 
-
-
 .label {
   color: #333;
   font-size: 16px;
@@ -89,13 +93,13 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
   transition: all 0.3s;
 }
 
-.label--active {
-  color: var(--orange-gold-color-base);
-  font-weight: 800;
+.item.dimmed {
+  opacity: 0.5;
 }
 
-.label--active--dimmed {
-  opacity: 0.5;
+.item.active .label, .dropdownItem:hover, .dropdownLabel:hover {
+  color: var(--orange-gold-color-base);
+  font-weight: 800;
 }
 
 

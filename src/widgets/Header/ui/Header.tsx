@@ -4,9 +4,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Logotype } from 'shared/ui/Logotype/Logotype';
 import HeaderIcon from 'shared/assets/logo/header-logo.svg';
 import { Button } from 'shared/ui/Button/Button';
+import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 
 import cls from './Header.module.scss';
-import { Dropdown, DropDownItems } from 'shared/ui/DropDown/DropDown';
 
 interface HeaderProps {
   className?: string;
@@ -14,10 +14,11 @@ interface HeaderProps {
 
 interface MenuItem {
   label: string;
-  dropdownItems?: DropDownItems;
+  to?: string;
+  dropdownItems?: (string | { label: string; subItems: string[] })[];
 }
 
-const menuItems = [
+const menuItems: MenuItem[] = [
   {
     label: 'Каталог',
     dropdownItems: [
@@ -29,42 +30,76 @@ const menuItems = [
       },
       'Гардеробные',
       'Рабочие зоны у окна',
-      'Зеркала с подвесными тумбами',
-      'Мебель для ванной / туалета',
-      'Мебель для столовой',
-      'Другая мебель',
+    ],
+  },
+  {
+    label: 'Услуги',
+    dropdownItems: [
+      'Доставка и сборка',
+      {
+        label: 'Дополнительно',
+        subItems: ['Выезд замерщика', '3D визуализация', 'Консультация'],
+      },
     ],
   },
   {
     label: 'Ремонт квартир под ключ',
+    to: '/repair',
   },
   {
     label: 'Дизайн-проект интерьера',
+    to: '/design',
   },
 ];
 
-const useHover = (delay: number) => {
-  const [isHovered, setIsHovered] = useState(false);
+export const Header = memo((props: HeaderProps) => {
+  const { className } = props;
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (index: number) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    setIsHovered(true);
+    setActiveIndex(index);
   };
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
-      setIsHovered(false);
-    }, delay);
+      setActiveIndex(null);
+    }, 400);
   };
 
-  return { isHovered, handleMouseEnter, handleMouseLeave };
-};
+  const renderDropdownItems = (items: MenuItem['dropdownItems']) => {
+    return (
+      <div className={cls.dropdown}>
+        {items?.map((item, index) => {
+          if (typeof item === 'string') {
+            return (
+              <span key={index} className={cls.dropdownItem}>
+                {item}
+              </span>
+            );
+          }
 
-export const Header = memo((props: HeaderProps) => {
-  const { className } = props;
+          if ('subItems' in item) {
+            return (
+              <ul key={index} className={cls.dropdownGroup}>
+                <span className={cls.dropdownLabel}>{item.label}</span>
+                {item.subItems.map((sub, subIdx) => (
+                  <li key={subIdx} className={cls.dropdownItem}>
+                    {sub}
+                  </li>
+                ))}
+              </ul>
+            );
+          }
+
+          return null;
+        })}
+      </div>
+    );
+  };
 
   return (
     <header className={classNames(cls.Header, {}, [className])}>
@@ -72,20 +107,30 @@ export const Header = memo((props: HeaderProps) => {
         <ul className={cls.itemList}>
           <Logotype Logo={HeaderIcon} />
 
-          {menuItems.map((item, index) => {
-            const { isHovered, handleMouseEnter, handleMouseLeave } = useHover(300);
+          {menuItems.map((item, idx) => {
+            const hasDropdown = !!item.dropdownItems;
+            const isActive = activeIndex === idx;
+            const isDimmed = activeIndex !== null && activeIndex !== idx;
 
             return (
               <li
-                key={index}
-                className={cls.item}
-                onMouseEnter={item.dropdownItems ? handleMouseEnter : undefined}
-                onMouseLeave={item.dropdownItems ? handleMouseLeave : undefined}
+                key={idx}
+                className={classNames(cls.item, {
+                  [cls.active]: isActive,
+                  [cls.dimmed]: isDimmed,
+                })}
+                onMouseEnter={() => handleMouseEnter(idx)}
+                onMouseLeave={handleMouseLeave}
               >
-                <h2 className={cls.label}>{item.label}</h2>
-                {/*{item.dropdownItems && (*/}
-                {/*  <Dropdown items={item.dropdownItems} isVisible={isHovered} />*/}
-                {/*)}*/}
+                {item.to ? (
+                  <AppLink variant={AppLinkVariant.ROUTE} className={cls.label} to={item.to}>
+                    {item.label}
+                  </AppLink>
+                ) : (
+                  <h2 className={cls.label}>{item.label}</h2>
+                )}
+
+                {hasDropdown && isActive && renderDropdownItems(item.dropdownItems)}
               </li>
             );
           })}
