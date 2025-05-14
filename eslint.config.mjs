@@ -10,9 +10,6 @@ import pluginUnusedImports from 'eslint-plugin-unused-imports';
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
-    globals: {
-      NodeJS: 'readonly',
-    },
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
       parser: tseslint.parser,
@@ -22,7 +19,10 @@ export default [
         ecmaFeatures: { jsx: true },
         project: './tsconfig.json',
       },
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        NodeJS: 'readonly',
+      },
     },
     plugins: {
       '@typescript-eslint': tseslint.plugin,
@@ -63,19 +63,15 @@ export default [
       'import/order': [
         'warn',
         {
-          groups: [
-            ['builtin', 'external'],
-            ['internal'],
-            ['parent', 'sibling', 'index'],
-          ],
+          groups: [['builtin', 'external'], ['internal'], ['parent', 'sibling', 'index']],
           'newlines-between': 'always',
         },
       ],
 
-// Убираем simple-import-sort
+      // Убираем simple-import-sort
       'simple-import-sort/imports': 'off',
       'simple-import-sort/exports': 'off',
-      'import/no-unresolved': 'off', // Disable unresolved import error
+      'import/no-unresolved': 'off',
     },
   },
 ];
