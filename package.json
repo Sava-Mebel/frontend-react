@@ -67,6 +67,8 @@
     "sass": "^1.86.0",
     "sass-loader": "^16.0.5",
     "storybook": "^8.6.12",
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard": "^38.0.0",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
