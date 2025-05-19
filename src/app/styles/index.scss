@@ -9,8 +9,20 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  width: 100%;
   min-height: 100vh;
+
+  main {
+    flex: 1;
+    padding-top: 106px;
+    background-size: cover;
+    opacity: 0;
+    animation: fadeInBG 1.5s ease-in-out forwards;
+    object-fit: cover;
+
+    &.with-fixed-footer {
+      padding-bottom: 208px;
+    }
+  }
 }
 
 header {
@@ -18,28 +30,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  //height: 60px; /* или твоя высота */
   z-index: 1000;
-}
-
-//footer {
-//  position: fixed;
-//  bottom: 0;
-//  left: 0;
-//  right: 0;
-//  //height: 40px; /* или твоя высота */
-//  z-index: 1000;
-//}
-
-main {
-  flex: 1;
-  padding-top: 106px; /* высота Header */
-  padding-bottom: 208px; /* высота Footer */
-  overflow: hidden;
-  background-size: cover;
-  opacity: 0;
-  animation: fadeInBG 1.5s ease-in-out forwards;
-  object-fit: cover;
 }
 
 @keyframes fadeInBG {
