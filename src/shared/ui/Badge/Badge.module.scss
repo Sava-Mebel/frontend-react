@@ -1,0 +1,49 @@
+$border-radius: 18px;
+$default-bg: #FCFCFC;
+$hover-bg: #FAF0E9;
+$hover-border: #C96623;
+$hover-text: #A15420;
+$top-pick-color: #9BC650;
+$client-pick-color: #F2B65F;
+$text-color: #333333;
+$white-color: #FFFFFF;
+$stars-pick-color: rgba(40, 40, 40, 0.40);
+
+.Badge {
+  border-radius: $border-radius;
+  height: 50px;
+  max-width: max-content;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  color: var(--withe-color-base);
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  &.CLIENT_PICK {
+    background: $client-pick-color;
+  }
+
+  &.TOP_PICK {
+    background: $top-pick-color;
+  }
+
+  &.STARS_PICK {
+    background: $stars-pick-color;
+  }
+}
+
+.badgeIcon {
+  margin-right: 12px;
+}
+
+.title {
+  margin-top: 30px;
+  color: inherit;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
