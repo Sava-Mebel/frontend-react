@@ -1,1 +1,1 @@
-export { CatalogGroup } from './ui/CatalogGroup'
+export { CatalogGroup } from './ui/CatalogGroup';
