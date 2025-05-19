@@ -22,13 +22,11 @@ const MainPage = memo((props: MainPageProps) => {
       return () => {
         selectorApp.style.background = originalBackground;
         selectorApp.style.backgroundSize = originalBackgroundSize;
-      }
+      };
     }
   }, []);
 
-  return (
-    <IntroSection />
-  );
+  return <IntroSection />;
 });
 
 MainPage.displayName = 'MainPage';
