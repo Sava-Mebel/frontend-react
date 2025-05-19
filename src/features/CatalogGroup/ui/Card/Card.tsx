@@ -1,20 +1,7 @@
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { Badge, BadgeTypes } from 'shared/ui/Badge/Badge';
 
 import cls from './Card.module.scss';
-
-export enum BadgeTypes {
-  TOP_PICK = 'TOP_PICK',
-  CLIENT_PICK = 'CLIENT_PICK',
-}
-
-const BADGE_TEXTS = {
-  [BadgeTypes.TOP_PICK]: 'Топ выбор',
-  [BadgeTypes.CLIENT_PICK]: 'Выбор клиентов',
-};
-const BADGE_IMG = {
-  [BadgeTypes.TOP_PICK]: '/media/badge/TopPick.png',
-  [BadgeTypes.CLIENT_PICK]: '/media/badge/ClientPick.png',
-};
 
 interface CardProps {
   className?: string;
@@ -30,8 +17,7 @@ export const Card = (props: CardProps) => {
     <figure className={classNames(cls.Card, {}, [className])}>
       {badge && (
         <span className={classNames(cls.badge, modsBadge)}>
-          <img src={BADGE_IMG[badge]} className={cls.badgeIcon} />
-          {BADGE_TEXTS[badge]}
+          <Badge mods={badge} />
         </span>
       )}
 

@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { BadgeTypes, Card } from 'features/CatalogGroup/ui/Card/Card';
+import { BadgeTypes } from 'shared/ui/Badge/Badge';
+import { Card } from 'features/CatalogGroup/ui/Card/Card';
 
 import cls from './CatalogGroup.module.scss';
 

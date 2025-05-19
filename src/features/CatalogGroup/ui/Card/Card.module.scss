@@ -6,7 +6,6 @@ $hover-text: #A15420;
 $top-pick-color: #9BC650;
 $client-pick-color: #F2B65F;
 $text-color: #333333;
-$white-color: #FFFFFF;
 
 .Card {
   background: $default-bg;
@@ -18,30 +17,23 @@ $white-color: #FFFFFF;
   transition: all 0.3s ease;
   color: $text-color;
 
+  &:hover {
+    background: $hover-bg;
+    border-color: $hover-border;
+    color: $hover-text;
+  }
+
   &:has(.TOP_PICK) {
-    border: 2px solid $top-pick-color;
+    border-color: $top-pick-color;
 
     &:hover {
-      border: 2px solid $top-pick-color;
       background: #F5F9EE;
       color: #546D28;
     }
   }
 
   &:has(.CLIENT_PICK) {
-    border: 2px solid $client-pick-color;
-
-    &:hover {
-      border: 2px solid $hover-border;
-      background: $hover-bg;
-      color: $hover-text;
-    }
-  }
-
-  &:hover {
-    background: $hover-bg;
-    border: 2px solid $hover-border;
-    color: $hover-text;
+    border-color: $client-pick-color;
   }
 }
 
@@ -84,7 +76,5 @@ $white-color: #FFFFFF;
   color: inherit;
   text-align: center;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
 }
