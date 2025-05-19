@@ -1,0 +1,36 @@
+$color: #333;
+
+.FeedbackCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  min-height: 50px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--orange-gold-color-base);
+  gap: 10px;
+}
+
+.title {
+  color: $color;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text {
+  color: $color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.destination {
+  color: $color;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal
+}

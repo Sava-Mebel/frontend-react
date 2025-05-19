@@ -1,0 +1,29 @@
+.ColorTool {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 19px;
+}
+
+.colorItem {
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  transition: border-color 0.2s;
+
+  &.active {
+    border: 2px solid var(--orange-gold-color-base);
+  }
+
+  &:hover {
+    border: 1px solid var(--orange-gold-color-base);
+    opacity: 0.8;
+    cursor: pointer;
+
+    &.active {
+      opacity: 1;
+      border: 2px solid var(--orange-gold-color-base);
+      cursor: not-allowed;
+    }
+  }
+}
