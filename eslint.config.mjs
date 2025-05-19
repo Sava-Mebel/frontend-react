@@ -74,4 +74,12 @@ export default [
       'import/no-unresolved': 'off',
     },
   },
+
+  // Отключаем react/display-name в сторибуках
+  {
+    files: ['**/*.stories.{js,jsx,ts,tsx}', '**/storybook/**/*.{js,jsx,ts,tsx}'],
+    rules: {
+      'react/display-name': 'off',
+    },
+  },
 ];
