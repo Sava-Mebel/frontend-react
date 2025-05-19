@@ -10,10 +10,11 @@ import cls from './Footer.module.scss';
 
 interface FooterProps {
   className?: string;
+  mode?: 'fixed' | 'static';
 }
 
 export const Footer = memo((props: FooterProps) => {
-  const { className } = props;
+  const { className, mode = 'static' } = props;
 
   const advantages = AdvantagesList.map((advantage) => {
     const { title, Icon, id } = advantage;
@@ -27,7 +28,7 @@ export const Footer = memo((props: FooterProps) => {
   });
 
   return (
-    <footer className={classNames(cls.Footer, {}, [className])}>
+    <footer className={classNames(cls.Footer, { [cls[mode]]: mode }, [className])}>
       <ul className={cls.advantagesList}>{advantages}</ul>
 
       <div className={cls.bottom}>
