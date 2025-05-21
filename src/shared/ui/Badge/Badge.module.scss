@@ -18,7 +18,6 @@ $stars-pick-color: rgba(40, 40, 40, 0.40);
   align-items: center;
   color: var(--withe-color-base);
   font-weight: bold;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
   &.CLIENT_PICK {
     background: $client-pick-color;
