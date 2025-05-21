@@ -5,6 +5,7 @@ import { Logotype } from 'shared/ui/Logotype/Logotype';
 import HeaderIcon from 'shared/assets/logo/header-logo.svg';
 import { Button } from 'shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 
 import cls from './Header.module.scss';
 
@@ -12,43 +13,42 @@ interface HeaderProps {
   className?: string;
 }
 
+interface DropdownItem {
+  label: string;
+  to: string;
+}
+
 interface MenuItem {
   label: string;
   to?: string;
-  dropdownItems?: (string | { label: string; subItems: string[] })[];
+  dropdownItems?: (DropdownItem | { label: string; subItems: DropdownItem[] })[];
 }
 
 const menuItems: MenuItem[] = [
   {
     label: 'Каталог',
     dropdownItems: [
-      'Кухонный гарнитур',
-      'Прихожие',
+      { label: 'Кухонный гарнитур', to: '/' },
+      { label: 'Прихожие', to: '/' },
       {
         label: 'Шкафы',
-        subItems: ['Распашные', 'Купе', 'Шкаф кровать'],
+        subItems: [
+          { label: 'Распашные', to: '/' },
+          { label: 'Купе', to: '/' },
+          { label: 'Шкаф кровать', to: '/' },
+        ],
       },
-      'Гардеробные',
-      'Рабочие зоны у окна',
-    ],
-  },
-  {
-    label: 'Услуги',
-    dropdownItems: [
-      'Доставка и сборка',
-      {
-        label: 'Дополнительно',
-        subItems: ['Выезд замерщика', '3D визуализация', 'Консультация'],
-      },
+      { label: 'Гардеробные', to: '/' },
+      { label: 'Рабочие зоны у окна', to: '/' },
     ],
   },
   {
     label: 'Ремонт квартир под ключ',
-    to: '/repair',
+    to: RoutePath.renovation,
   },
   {
     label: 'Дизайн-проект интерьера',
-    to: '/design',
+    to: RoutePath.interior_design,
   },
 ];
 
@@ -74,11 +74,16 @@ export const Header = memo((props: HeaderProps) => {
     return (
       <div className={cls.dropdown}>
         {items?.map((item, index) => {
-          if (typeof item === 'string') {
+          if ('to' in item) {
             return (
-              <span key={index} className={cls.dropdownItem}>
-                {item}
-              </span>
+              <AppLink
+                key={index}
+                variant={AppLinkVariant.ROUTE}
+                className={cls.dropdownItem}
+                to={item.to}
+              >
+                {item.label}
+              </AppLink>
             );
           }
 
@@ -88,7 +93,9 @@ export const Header = memo((props: HeaderProps) => {
                 <span className={cls.dropdownLabel}>{item.label}</span>
                 {item.subItems.map((sub, subIdx) => (
                   <li key={subIdx} className={cls.dropdownItem}>
-                    {sub}
+                    <AppLink variant={AppLinkVariant.ROUTE} to={sub.to}>
+                      {sub.label}
+                    </AppLink>
                   </li>
                 ))}
               </ul>
