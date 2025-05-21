@@ -5,6 +5,7 @@ import { InteriorDesignPage } from 'pages/InteriorDesignPage';
 import { MainPage } from 'pages/MainPage';
 import { CatalogPage } from 'pages/CatalogPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
+import { CatalogGroupPage } from 'pages/CatalagGroupPage';
 
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
@@ -15,6 +16,7 @@ export enum AppRoutes {
   RENOVATION = 'renovation',
   INTERIOR_DESIGN = 'interior_design',
   CATALOG = 'catalog',
+  CATALOG_GROUP = 'catalog_group',
   CATALOG_CARD = 'catalog_card',
 
   // last
@@ -26,7 +28,8 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.RENOVATION]: '/renovation',
   [AppRoutes.INTERIOR_DESIGN]: '/interior-design',
   [AppRoutes.CATALOG]: '/catalog',
-  [AppRoutes.CATALOG_CARD]: '/catalog/:id',
+  [AppRoutes.CATALOG_GROUP]: '/catalog/group/:groupId', // или '/catalog/:groupId' в зависимости от вашей структуры
+  [AppRoutes.CATALOG_CARD]: '/catalog/:groupId/:id', // или '/catalog/item/:id' - зависит от вашей логики
 
   // последний
   [AppRoutes.NOT_FOUND]: '*',
@@ -48,6 +51,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.CATALOG]: {
     path: RoutePath.catalog,
     element: <CatalogPage />,
+  },
+  [AppRoutes.CATALOG_GROUP]: {
+    path: RoutePath.catalog_group,
+    element: <CatalogGroupPage />,
   },
   [AppRoutes.CATALOG_CARD]: {
     path: RoutePath.catalog_card,
