@@ -20,7 +20,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 1,
     pageName: 'Кухонный гарнитур',
-    groupId: '/catalog/group/kitchen-sets',
+    groupId: 'kitchen-sets',
     title: 'Кухонные гарнитуры на заказ',
     description: 'Широкий выбор кухонных гарнитуров по индивидуальным размерам и дизайну.',
     type: 'kitchen',
@@ -28,7 +28,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 2,
     pageName: 'Прихожие',
-    groupId: '/catalog/group/hallways',
+    groupId: 'hallways',
     title: 'Мебель для прихожей',
     description: 'Стильные прихожие, шкафы-купе и гардеробные системы для вашего дома.',
     type: 'hallway',
@@ -36,7 +36,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 3,
     pageName: 'Распашные шкафы',
-    groupId: '/catalog/group/swing-wardrobes',
+    groupId: 'swing-wardrobes',
     title: 'Распашные шкафы на заказ',
     description: 'Классические и современные распашные шкафы с удобной системой хранения.',
     type: 'wardrobe',
@@ -44,7 +44,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 4,
     pageName: 'Шкафы Купе',
-    groupId: '/catalog/group/sliding-wardrobes',
+    groupId: 'sliding-wardrobes',
     title: 'Шкафы-купе по индивидуальным размерам',
     description: 'Эргономичные шкафы-купе с раздвижными дверями и продуманным наполнением.',
     type: 'wardrobe',
@@ -52,7 +52,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 5,
     pageName: 'Шкаф кровать',
-    groupId: '/catalog/group/wardrobe-bed',
+    groupId: 'wardrobe-bed',
     title: 'Шкафы-кровати с механизмом подъема',
     description: 'Удобные трансформируемые шкафы-кровати для экономии пространства.',
     type: 'bedroom',
@@ -60,7 +60,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 6,
     pageName: 'Гардеробные',
-    groupId: '/catalog/group/dressing-rooms',
+    groupId: 'dressing-rooms',
     title: 'Гардеробные системы',
     description: 'Индивидуальные гардеробные комнаты и системы хранения для вашего дома.',
     type: 'storage',
@@ -68,7 +68,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 7,
     pageName: 'Рабочие зоны у окна',
-    groupId: '/catalog/group/window-workspaces',
+    groupId: 'window-workspaces',
     title: 'Рабочие столы у окна',
     description: 'Удобные и функциональные рабочие зоны с естественным освещением.',
     type: 'workspace',
@@ -76,7 +76,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 8,
     pageName: 'Зеркала с подвесными тумбами',
-    groupId: '/catalog/group/mirrors-with-cabinets',
+    groupId: 'mirrors-with-cabinets',
     title: 'Зеркала с тумбами для прихожей',
     description: 'Стильные зеркала с подвесными тумбами для удобного хранения мелочей.',
     type: 'hallway',
@@ -84,7 +84,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 9,
     pageName: 'Мебель для ванной / туалета',
-    groupId: '/catalog/group/bathroom-furniture',
+    groupId: 'bathroom-furniture',
     title: 'Мебель для ванной комнаты',
     description: 'Влагостойкая мебель для ванной и туалета: тумбы, шкафы, полки.',
     type: 'bathroom',
@@ -92,7 +92,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 10,
     pageName: 'Мебель для спальни',
-    groupId: '/catalog/group/bedroom-furniture',
+    groupId: 'bedroom-furniture',
     title: 'Мебель для спальни на заказ',
     description: 'Кровати, шкафы, комоды и туалетные столики в едином стиле.',
     type: 'bedroom',
@@ -100,7 +100,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 11,
     pageName: 'Мебель для столовой',
-    groupId: '/catalog/group/dining-room-furniture',
+    groupId: 'dining-room-furniture',
     title: 'Обеденные группы и буфеты',
     description: 'Уютные столовые гарнитуры и серванты для семейных обедов.',
     type: 'dining',
@@ -108,7 +108,7 @@ export const CatalogGroupMocked: CatalogGroupType[] = [
   {
     id: 12,
     pageName: 'Другая мебель',
-    groupId: '/catalog/group/other-furniture',
+    groupId: 'other-furniture',
     title: 'Эксклюзивная мебель на заказ',
     description: 'Нестандартные решения для интерьера: ниши, стеллажи, мебель под заказ.',
     type: 'other',

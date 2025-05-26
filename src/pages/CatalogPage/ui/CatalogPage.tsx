@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { CatalogGroup } from 'features/CatalogGroup';
-import { CatalogGroupMocked, CatalogGroupType } from 'pages/CatalogPage/model/types/grope';
+import { CatalogGroupMocked, CatalogGroupType } from 'pages/CatalogPage/model/types/group';
 
 interface CatalogProps {
   className?: string;

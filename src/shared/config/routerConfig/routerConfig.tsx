@@ -11,6 +11,21 @@ export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
 };
 
+export enum CatalogGroupID {
+  KITCHEN_SETS = 'kitchen-sets',
+  HALLWAYS = 'hallways',
+  SWING_WARDROBES = 'swing-wardrobes',
+  SLIDING_WARDROBES = 'sliding-wardrobes',
+  WARDROBE_BED = 'wardrobe-bed',
+  DRESSING_ROOMS = 'dressing-rooms',
+  WINDOW_WORKSPACES = 'window-workspaces',
+  MIRRORS_WITH_CABINETS = 'mirrors-with-cabinet',
+  BATHROOM_FURNITURE = 'bathroom-furniture',
+  BEDROOM_FURNITURE = 'bedroom-furniture',
+  DINING_ROOM_FURNITURE = 'dining-room-furniture',
+  OTHER_FURNITURE = 'other-furniture',
+}
+
 export enum AppRoutes {
   MAIN = 'main',
   RENOVATION = 'renovation',
@@ -28,7 +43,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.RENOVATION]: '/renovation',
   [AppRoutes.INTERIOR_DESIGN]: '/interior-design',
   [AppRoutes.CATALOG]: '/catalog',
-  [AppRoutes.CATALOG_GROUP]: '/catalog/group/:groupId', // или '/catalog/:groupId' в зависимости от вашей структуры
+  [AppRoutes.CATALOG_GROUP]: '/catalog/groups/:groupId',
   [AppRoutes.CATALOG_CARD]: '/catalog/:groupId/:id', // или '/catalog/item/:id' - зависит от вашей логики
 
   // последний
