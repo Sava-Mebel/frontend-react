@@ -22,7 +22,7 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
   align-items: center;
   justify-content: space-between;
   background: var(--grey-5-base-color);
-  height: calc(var(--footer-height) / 2);
+  height: var(--footer-height);
   padding: $padding;
 }
 
