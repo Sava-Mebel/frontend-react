@@ -19,7 +19,7 @@
     text-transform: uppercase;
 
     & .title {
-      color: #FFF;
+      color: var(--white-base-color );
       text-align: center;
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
       font-size: 55px;
@@ -30,7 +30,7 @@
     }
 
     & .subTitle {
-      color: #C96623;
+      color: var(--orange-gold-base-color);
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
       font-size: 24px;
       font-style: normal;
@@ -40,7 +40,7 @@
   }
 
   & .description {
-    color: #9D9D9D;
+    color: var(--gray-muted-color);
     text-align: center;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 20px;
