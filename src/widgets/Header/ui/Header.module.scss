@@ -1,7 +1,6 @@
 $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
 
 .Header {
-  //position: relative;
   width: 100%;
   background: var(--header-bg);
   display: flex;
@@ -46,8 +45,8 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(7, auto);
-  grid-template-columns: repeat(auto-fit, 278px); // Колонки по 278px
-  column-gap: 32px; // Отступ между колонками
+  grid-template-columns: repeat(auto-fit, 278px);
+  column-gap: 32px;
   row-gap: 8px;
 
   .dropdownItem,
