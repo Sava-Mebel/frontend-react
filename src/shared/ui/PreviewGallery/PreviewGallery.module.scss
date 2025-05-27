@@ -1,3 +1,6 @@
+$color-text: var(--gray-3-color-base);
+$color-orange: var(--orange-gold-base-color);
+
 .PreviewGallery {
   display: flex;
   flex-direction: column;
@@ -32,17 +35,17 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
-  color: #333333;
+  color: $color-text;
 
   &:hover {
     border: none;
-    color: #C96623;
+    color: $color-orange;
   }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    color: #333333;
+    color: $color-text;
     border: none;
   }
 }
@@ -71,11 +74,11 @@
   object-fit: cover;
 
   &:hover {
-    border: 1px solid var(--orange-gold-color-base);
+    border: 1px solid $color-orange;
     cursor: pointer;
   }
 
   &.active {
-    border: 2px solid var(--orange-gold-color-base);
+    border: 2px solid $color-orange;
   }
 }
