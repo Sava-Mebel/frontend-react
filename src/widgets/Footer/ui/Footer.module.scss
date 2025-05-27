@@ -58,7 +58,7 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--footer-bg);
+  background: var(--grey-5-base-color);
   height: calc(var(--footer-height) / 2);
   padding: $padding;
 }
