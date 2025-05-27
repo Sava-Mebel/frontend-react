@@ -117,7 +117,7 @@ export const Header = memo((props: HeaderProps) => {
                 variant={AppLinkVariant.ROUTE}
                 className={cls.dropdownItem}
                 to={`${pathCatalogGroups}${item.to}`}
-                onClick={handleLinkClick} // Добавляем обработчик клика
+                onClick={handleLinkClick}
               >
                 {item.label}
               </AppLink>
@@ -133,7 +133,7 @@ export const Header = memo((props: HeaderProps) => {
                     <AppLink
                       variant={AppLinkVariant.ROUTE}
                       to={`${pathCatalogGroups}${sub.to}`}
-                      onClick={handleLinkClick} // Добавляем обработчик клика
+                      onClick={handleLinkClick}
                     >
                       {sub.label}
                     </AppLink>
