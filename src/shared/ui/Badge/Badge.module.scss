@@ -1,12 +1,12 @@
 $border-radius: 18px;
 $default-bg: #FCFCFC;
 $hover-bg: #FAF0E9;
-$hover-border: #C96623;
+$hover-border: var(--orange-gold-base-color);
 $hover-text: #A15420;
-$top-pick-color: #9BC650;
-$client-pick-color: #F2B65F;
-$text-color: #333333;
-$white-color: #FFFFFF;
+$top-pick-color: var(--green-accent-color);
+$client-pick-color: var(--orange-accent-color);
+$text-color: var(--gray-3-color-base);
+$white-color: var(--white-base-color);
 $stars-pick-color: rgba(40, 40, 40, 0.40);
 
 .Badge {
