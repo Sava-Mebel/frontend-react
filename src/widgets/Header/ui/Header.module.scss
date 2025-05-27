@@ -85,7 +85,7 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
 }
 
 .label {
-  color: #333;
+  color: var(--gray-3-base-color);
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
