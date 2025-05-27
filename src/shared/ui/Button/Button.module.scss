@@ -1,8 +1,9 @@
-$bg-color: var(--orange-gold-color-base);
-$bg-color-hover: var(--withe-color-base);
+$bg-color: var(--orange-gold-base-color);
+$bg-color-hover: var(--white-base-color);
 
-$text-color: var(--withe-color-base);
-$text-color-hover: var(--orange-gold-color-base);
+$text-color: var(--white-base-color);
+$text-color-hover: var(--orange-gold-base-color);
+
 .Button {
   width: max-content;
   min-height: 24px;
@@ -12,7 +13,7 @@ $text-color-hover: var(--orange-gold-color-base);
   opacity: 1;
   transition: all 0.6s ease-in-out;
 
-  color: var(--withe-color-base);
+  color: var(--white-base-color);
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
