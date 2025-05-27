@@ -107,14 +107,13 @@ export const Header = memo((props: HeaderProps) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  // Обработчик клика по ссылке в dropdown
   const handleLinkClick = () => {
     closeDropdown();
   };
 
   const renderDropdownItems = (items: MenuItem['dropdownItems']) => {
     return (
-      <div className={cls.dropdown} ref={dropdownRef}>
+      <div className={classNames(cls.dropdown, { [cls[theme]]: theme })} ref={dropdownRef}>
         {items?.map((item, index) => {
           if ('to' in item) {
             return (
