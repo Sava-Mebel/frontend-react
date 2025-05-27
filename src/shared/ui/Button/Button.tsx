@@ -11,7 +11,7 @@ export enum ButtonThemeTypes {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  theme?: ButtonTheme;
+  theme?: ButtonThemeTypes;
   disabled?: boolean;
 }
 
@@ -19,13 +19,13 @@ export const Button: FC<ButtonProps> = (props) => {
   const {
     className,
     children = 'Кнопка',
-    theme = ButtonTheme.OUTLINE,
+    theme = ButtonThemeTypes.OUTLINE,
     disabled,
     ...otherProps
   } = props;
 
   const mods: Mods = {
-    [cls[theme]]: true,
+    [cls[theme]]: theme,
     [cls.disabled]: disabled,
   };
 
