@@ -17,43 +17,6 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
   }
 }
 
-.advantagesList {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  background: var(--orange-gold-base-color);
-  height: calc(var(--footer-height) / 2);
-  padding: $padding;
-}
-
-.advantagesItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.advantagesTitle {
-  color: var(--withe-color-base);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-
-.advantagesIcon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  margin-right: 18px;
-
-  svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-}
-
 .bottom {
   display: flex;
   align-items: center;
