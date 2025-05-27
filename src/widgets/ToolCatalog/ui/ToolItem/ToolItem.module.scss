@@ -1,3 +1,6 @@
+$color: var(--white-base-color);
+$color-accent: var(--orange-gold-base-color);
+
 .ToolItem {
   display: flex;
   flex-direction: row;
@@ -6,35 +9,35 @@
   gap: 10px;
   width: max-content;
   height: 60px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid $color;
   border-radius: 5px;
   padding: 10px;
   transition: border 0.2s ease, opacity 0.2s ease;
 
   &:not(.active):hover {
-    border-color: #C96623;
+    border-color: $color-accent;
     opacity: 1;
 
     .text {
-      color: #C96623;
+      color: $color-accent;
     }
 
     .icon {
-      fill: #C96623;
+      fill: $color-accent;
     }
   }
 }
 
 .active {
-  background-color: #C96623;
-  border-color: #FFFFFF;
+  background-color: $color-accent;
+  border-color: $color;
 
   .text {
-    color: #FFFFFF;
+    color: $color;
   }
 
   .icon {
-    fill: #FFFFFF;
+    fill: $color;
   }
 
   &:hover {
@@ -44,7 +47,7 @@
 }
 
 .text {
-  color: #FFFFFF;
+  color: $color;
   text-align: center;
   font-size: 14px;
   font-style: normal;
@@ -55,6 +58,6 @@
 }
 
 .icon {
-  fill: #FFFFFF;
+  fill: $color;
   transition: fill 0.2s ease;
 }
