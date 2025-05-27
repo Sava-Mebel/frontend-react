@@ -9,8 +9,14 @@ import { CatalogGroupID, RoutePath } from 'shared/config/routerConfig/routerConf
 
 import cls from './Header.module.scss';
 
+export enum ThemeTypes {
+  NONE = 'none',
+  GREY = 'grey',
+}
+
 interface HeaderProps {
   className?: string;
+  theme?: ThemeTypes;
 }
 
 interface DropdownItem {
@@ -58,7 +64,7 @@ const menuItems: MenuItem[] = [
 ];
 
 export const Header = memo((props: HeaderProps) => {
-  const { className } = props;
+  const { className, theme = ThemeTypes.NONE } = props;
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -150,7 +156,7 @@ export const Header = memo((props: HeaderProps) => {
   };
 
   return (
-    <header className={classNames(cls.Header, {}, [className])}>
+    <header className={classNames(cls.Header, { [cls[theme]]: theme }, [className])}>
       <nav className={cls.nav}>
         <ul className={cls.itemList}>
           <Logotype Logo={HeaderIcon} />

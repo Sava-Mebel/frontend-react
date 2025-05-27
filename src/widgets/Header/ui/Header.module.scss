@@ -10,7 +10,12 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
 
   height: var(--header-height);
   padding: $padding;
+
+  &.grey {
+    background: var(--grey-5-base-color);
+  }
 }
+
 .nav {
   width: 100%;
 }
