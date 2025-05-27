@@ -3,7 +3,7 @@ import { memo, useState, useRef, useCallback, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Logotype } from 'shared/ui/Logotype/Logotype';
 import HeaderIcon from 'shared/assets/logo/header-logo.svg';
-import { Button } from 'shared/ui/Button/Button';
+import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 import { CatalogGroupID, RoutePath } from 'shared/config/routerConfig/routerConfig';
 
@@ -190,7 +190,7 @@ export const Header = memo((props: HeaderProps) => {
             );
           })}
 
-          <Button>Позвонить мне</Button>
+          <Button theme={ButtonThemeTypes.OUTLINE}>Позвонить мне</Button>
         </ul>
       </nav>
     </header>

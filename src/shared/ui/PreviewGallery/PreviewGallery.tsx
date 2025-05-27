@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NextIcon from 'shared/assets/icon/next.svg';
 import BackIcon from 'shared/assets/icon/back.svg';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 
 import cls from './PreviewGallery.module.scss';
 
@@ -54,7 +54,7 @@ export const PreviewGallery = (props: PreviewGalleryProps) => {
       <div className={cls.miniCarousel}>
         <Button
           className={cls.btn}
-          theme={ButtonTheme.CLEAR}
+          theme={ButtonThemeTypes.CLEAR}
           onClick={scrollLeft}
           disabled={!canScrollLeft}
         >
@@ -80,7 +80,7 @@ export const PreviewGallery = (props: PreviewGalleryProps) => {
 
         <Button
           className={cls.btn}
-          theme={ButtonTheme.CLEAR}
+          theme={ButtonThemeTypes.CLEAR}
           onClick={scrollRight}
           disabled={!canScrollRight}
         >

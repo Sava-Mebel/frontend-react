@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { toolItemLists, ToolItemType } from 'widgets/ToolCatalog/model/toolItems';
 import { ToolItem } from 'widgets/ToolCatalog/ui/ToolItem/ToolItem';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { useAppBackground } from 'shared/lib/hooks/useAppBackground/useAppBackground';
 
 import cls from './ToolCatalog.module.scss';
@@ -39,7 +39,7 @@ export const ToolCatalog = ({ className }: ToolCatalogProps) => {
 
         <Button
           className={cls.btnInfo}
-          theme={ButtonTheme.OUTLINE}
+          theme={ButtonThemeTypes.OUTLINE}
           onClick={() => console.log('test')}
         >
           Подобрать

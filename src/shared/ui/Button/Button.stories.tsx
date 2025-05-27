@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, ButtonTheme } from './Button';
+import { Button, ButtonThemeTypes } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'shared/Button',
@@ -9,7 +9,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     theme: {
       control: 'select',
-      options: Object.values(ButtonTheme),
+      options: Object.values(ButtonThemeTypes),
     },
     onClick: { action: 'clicked' },
   },
@@ -21,21 +21,21 @@ type Story = StoryObj<typeof Button>;
 export const Outline: Story = {
   args: {
     children: 'Кнопка',
-    theme: ButtonTheme.OUTLINE,
+    theme: ButtonThemeTypes.OUTLINE,
   },
 };
 
 export const Clear: Story = {
   args: {
     children: 'Очистить',
-    theme: ButtonTheme.CLEAR,
+    theme: ButtonThemeTypes.CLEAR,
   },
 };
 
 export const Disabled: Story = {
   args: {
     children: 'Отключена',
-    theme: ButtonTheme.OUTLINE,
+    theme: ButtonThemeTypes.OUTLINE,
     disabled: true,
   },
 };

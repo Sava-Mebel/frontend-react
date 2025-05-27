@@ -4,7 +4,7 @@ import { classNames, Mods } from 'shared/lib/classNames/classNames';
 
 import cls from './Button.module.scss';
 
-export enum ButtonTheme {
+export enum ButtonThemeTypes {
   CLEAR = 'clear',
   OUTLINE = 'outline',
 }

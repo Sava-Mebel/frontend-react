@@ -1,5 +1,5 @@
 import { ToolItemType } from 'widgets/ToolCatalog/model/toolItems';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 
 import cls from './ToolItem.module.scss';
@@ -22,7 +22,7 @@ export const ToolItem = ({ item, onClick, isActive }: ToolItemProps) => {
   return (
     <Button
       className={classNames(cls.ToolItem, mods, [])}
-      theme={ButtonTheme.CLEAR}
+      theme={ButtonThemeTypes.CLEAR}
       onClick={() => onClick(item)}
     >
       <Icon className={cls.icon} />
