@@ -1,1 +1,1 @@
-export { Header } from './ui/Header';
+export { Header, ThemeTypes } from './ui/Header';
