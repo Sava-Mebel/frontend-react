@@ -2,7 +2,7 @@ import React, { Suspense, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import AppRouter from 'app/provider/routerProvider/ui/AppRouter';
-import { Header } from 'widgets/Header';
+import { Header, ThemeTypes } from 'widgets/Header';
 import { Footer } from 'widgets/Footer';
 
 function App() {
@@ -12,9 +12,13 @@ function App() {
     return pathname === '/' ? 'fixed' : 'static';
   }, [pathname]);
 
+  const headerMode = useMemo(() => {
+    return pathname === '/' ? ThemeTypes.NONE : ThemeTypes.GREY;
+  }, [pathname]);
+
   return (
     <div className={'app'}>
-      <Header />
+      <Header theme={headerMode} />
       <main className={`app__main ${footerMode === 'fixed' ? 'with-fixed-footer' : ''}`}>
         <Suspense fallback={null}>
           <AppRouter />
