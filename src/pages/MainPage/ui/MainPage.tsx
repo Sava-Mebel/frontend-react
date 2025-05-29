@@ -1,6 +1,6 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 
-import { IntroSection } from 'widgets/IntroSection';
+import { ToolCatalog } from 'widgets/ToolCatalog';
 
 interface MainPageProps {
   className?: string;
@@ -9,24 +9,7 @@ interface MainPageProps {
 const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
 
-  useEffect(() => {
-    const selectorApp = document.querySelector('.app__main') as HTMLElement;
-
-    if (selectorApp) {
-      const originalBackground = selectorApp.style.background;
-      const originalBackgroundSize = selectorApp.style.backgroundSize;
-
-      selectorApp.style.background = `url('/media/background.png') no-repeat center center`;
-      selectorApp.style.backgroundSize = 'cover';
-
-      return () => {
-        selectorApp.style.background = originalBackground;
-        selectorApp.style.backgroundSize = originalBackgroundSize;
-      };
-    }
-  }, []);
-
-  return <IntroSection />;
+  return <ToolCatalog />;
 });
 
 MainPage.displayName = 'MainPage';
