@@ -1,16 +1,14 @@
 import { ToolItemType } from 'widgets/ToolCatalog/model/toolItems';
-import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 
 import cls from './ToolItem.module.scss';
 
 interface ToolItemProps {
   item: ToolItemType;
-  onClick: (item: ToolItemType) => void;
   isActive: boolean;
 }
 
-export const ToolItem = ({ item, onClick, isActive }: ToolItemProps) => {
+export const ToolItem = ({ item, isActive }: ToolItemProps) => {
   const { Icon, text } = item;
   console.log('isActive', isActive);
   const mods: Mods = {
@@ -20,14 +18,10 @@ export const ToolItem = ({ item, onClick, isActive }: ToolItemProps) => {
   console.log('mods', mods);
 
   return (
-    <Button
-      className={classNames(cls.ToolItem, mods, [])}
-      theme={ButtonThemeTypes.CLEAR}
-      onClick={() => onClick(item)}
-    >
+    <div className={classNames(cls.ToolItem, mods, [])}>
       <Icon className={cls.icon} />
       <p className={cls.text}>{text}</p>
-    </Button>
+    </div>
   );
 };
 
