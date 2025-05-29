@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
-import { toolItemLists, ToolItemType } from 'widgets/ToolCatalog/model/toolItems';
+import { toolItemLists } from 'widgets/ToolCatalog/model/toolItems';
 import { ToolItem } from 'widgets/ToolCatalog/ui/ToolItem/ToolItem';
 import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { useAppBackground } from 'shared/lib/hooks/useAppBackground/useAppBackground';
@@ -13,15 +13,24 @@ interface ToolCatalogProps {
 }
 
 export const ToolCatalog = ({ className }: ToolCatalogProps) => {
-  const [activeItemId, setActiveItemId] = useState<number>(1);
-  const [activeBackground, setActiveBackground] = useState<string>('/media/kitchen.png');
+  const [activeItemId, setActiveItemId] = useState<number>(toolItemLists[0].id);
+  const [activeBackground, setActiveBackground] = useState<string>(toolItemLists[0].urlBg);
   useAppBackground(activeBackground);
 
-  const handleClick = (item: ToolItemType) => {
-    console.log(item);
-    setActiveBackground(item.urlBg);
-    setActiveItemId(item.id);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveItemId((prevId) => {
+        const currentIndex = toolItemLists.findIndex((item) => item.id === prevId);
+        const nextIndex = (currentIndex + 1) % toolItemLists.length;
+        const nextItem = toolItemLists[nextIndex];
+
+        setActiveBackground(nextItem.urlBg);
+        return nextItem.id;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className={classNames(cls.ToolCatalog, {}, [className])}>
@@ -48,12 +57,7 @@ export const ToolCatalog = ({ className }: ToolCatalogProps) => {
 
       <div className={cls.tool}>
         {toolItemLists.map((item) => (
-          <ToolItem
-            key={item.id}
-            item={item}
-            onClick={handleClick}
-            isActive={item.id === activeItemId}
-          />
+          <ToolItem key={item.id} item={item} isActive={item.id === activeItemId} />
         ))}
       </div>
     </section>
