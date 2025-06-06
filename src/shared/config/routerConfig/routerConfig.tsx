@@ -6,6 +6,7 @@ import { MainPage } from 'pages/MainPage';
 import { CatalogPage } from 'pages/CatalogPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 import { CatalogGroupPage } from 'pages/CatalagGroupPage';
+import { CatalogCardPage } from 'pages/CatalogCardPage';
 
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
@@ -44,7 +45,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.INTERIOR_DESIGN]: '/interior-design',
   [AppRoutes.CATALOG]: '/catalog',
   [AppRoutes.CATALOG_GROUP]: '/catalog/groups/:groupId',
-  [AppRoutes.CATALOG_CARD]: '/catalog/:groupId/:id', // или '/catalog/item/:id' - зависит от вашей логики
+  [AppRoutes.CATALOG_CARD]: '/catalog/:groupId/:id', // или '/catalog/item/:id'
 
   // последний
   [AppRoutes.NOT_FOUND]: '*',
@@ -73,7 +74,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   },
   [AppRoutes.CATALOG_CARD]: {
     path: RoutePath.catalog_card,
-    element: <CatalogPage />, // или отдельная CatalogCardPage
+    element: <CatalogCardPage />,
   },
 
   // last
