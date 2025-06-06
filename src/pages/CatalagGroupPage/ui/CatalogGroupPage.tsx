@@ -6,6 +6,8 @@ import { CatalogGroupID } from 'shared/config/routerConfig/routerConfig';
 import { CatalogGroup } from 'features/CatalogGroup';
 import { CatalogGroupMocked } from 'pages/CatalogPage/model/types/group';
 
+import cls from './CatalogGroup.module.scss';
+
 interface CatalogGroupPageProps {
   className?: string;
 }
@@ -19,16 +21,22 @@ const CatalogGroupPage = memo((props: CatalogGroupPageProps) => {
   const { groupId } = useParams<{ groupId: string }>();
 
   if (!isCatalogGroupId(groupId)) {
-    return <div className={classNames('Catalog', {}, [className])}>Группа не найдена</div>;
+    return <div className={classNames(cls.CatalogGroup, {}, [className])}>Группа не найдена</div>;
   }
 
   const currentGroup = CatalogGroupMocked.find((group) => group.groupId === groupId);
 
   if (!currentGroup) {
-    return <div className={classNames('Catalog', {}, [className])}>Данные группы не найдены</div>;
+    return (
+      <div className={classNames(cls.CatalogGroup, {}, [className])}>Данные группы не найдены</div>
+    );
   }
 
-  return <CatalogGroup description={currentGroup.description} title={currentGroup.title} />;
+  return (
+    <div className={classNames(cls.CatalogGroup, {}, [className])}>
+      <CatalogGroup description={currentGroup.description} title={currentGroup.title} />
+    </div>
+  );
 });
 
 CatalogGroupPage.displayName = 'CatalogGroupPage';

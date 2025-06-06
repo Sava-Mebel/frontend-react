@@ -1,0 +1,12 @@
+.Catalog {
+  padding: 64px 0;
+  background: var(--gray-6-base-color);
+}
+
+.container {
+  margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
