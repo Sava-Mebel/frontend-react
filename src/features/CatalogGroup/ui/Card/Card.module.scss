@@ -10,9 +10,13 @@ $client-pick-accent-color: var(--orange-accent-color-75);
 $text-color: var(--gray-3-base-color);
 $text-color-default: #FFF;
 
+.AppLink {
+  max-width: 32%;
+}
+
 .Card {
   position: relative;
-  max-width: 32%;
+  max-width: 100%;
   padding: 12px 12px 24px;
   border-radius: $border-radius;
   border: 2px solid $default-bg;
