@@ -26,11 +26,6 @@ $color-accent: var(--orange-gold-base-color);
   .icon {
     fill: $color;
   }
-
-  &:hover {
-    opacity: 1;
-    cursor: default;
-  }
 }
 
 .text {
