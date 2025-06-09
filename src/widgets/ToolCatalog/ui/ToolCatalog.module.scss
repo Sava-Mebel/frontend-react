@@ -1,3 +1,10 @@
+$bg-color: var(--orange-gold-base-color);
+$bg-color-hover: var(--orange-hober-base-color);
+$bg-color-active: var(--white-base-color);
+
+$text-color: var(--white-base-color);
+$text-color-hover: var(--orange-gold-base-color);
+
 body {
   background: var(--gray-6-base-color);
 }
@@ -34,7 +41,7 @@ body {
     }
 
     & .subTitle {
-      color: var(--orange-gold-base-color);
+      color: $bg-color;
       text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
       font-size: 24px;
       font-style: normal;
@@ -53,9 +60,34 @@ body {
     line-height: 131.9%; /* 26.38px */
   }
 
-  .btnInfo {
-    margin-top: 34px;
-    width: 300px;
-    height: 54px;
+  .linkInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    margin: 34px auto 0 auto;
+    min-height: 54px;
+    border-radius: 10px;
+    background: $bg-color;
+
+    &:hover {
+      border: solid 1px $bg-color;
+      background: $bg-color-hover;
+    }
+
+    &:active {
+      background-color: $bg-color-active;
+      color: $text-color-hover;
+    }
+
+    & .linkText {
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 50.5px;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+    }
   }
 }
