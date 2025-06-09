@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { toolItemLists } from 'widgets/ToolCatalog/model/toolItems';
 import { ToolItem } from 'widgets/ToolCatalog/ui/ToolItem/ToolItem';
-import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
-import { useAppBackground } from 'shared/lib/hooks/useAppBackground/useAppBackground';
+import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
+import { AppRoutes } from 'shared/config/routerConfig/routerConfig';
 
 import cls from './ToolCatalog.module.scss';
 
@@ -14,8 +14,6 @@ interface ToolCatalogProps {
 
 export const ToolCatalog = ({ className }: ToolCatalogProps) => {
   const [activeItemId, setActiveItemId] = useState<number>(toolItemLists[0].id);
-  const [activeBackground, setActiveBackground] = useState<string>(toolItemLists[0].urlBg);
-  useAppBackground(activeBackground);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,7 +22,6 @@ export const ToolCatalog = ({ className }: ToolCatalogProps) => {
         const nextIndex = (currentIndex + 1) % toolItemLists.length;
         const nextItem = toolItemLists[nextIndex];
 
-        setActiveBackground(nextItem.urlBg);
         return nextItem.id;
       });
     }, 3000);
@@ -46,13 +43,9 @@ export const ToolCatalog = ({ className }: ToolCatalogProps) => {
           эргономики, стиля и ваших привычек
         </p>
 
-        <Button
-          className={cls.btnInfo}
-          theme={ButtonThemeTypes.OUTLINE}
-          onClick={() => console.log('test')}
-        >
-          Подобрать
-        </Button>
+        <AppLink className={cls.linkInfo} variant={AppLinkVariant.ROUTE} to={AppRoutes.CATALOG}>
+          <p className={cls.linkText}>Подобрать</p>
+        </AppLink>
       </div>
 
       <div className={cls.tool}>
