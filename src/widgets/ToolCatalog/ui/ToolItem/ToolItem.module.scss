@@ -13,19 +13,6 @@ $color-accent: var(--orange-gold-base-color);
   border-radius: 5px;
   padding: 10px;
   transition: border 0.2s ease, opacity 0.2s ease;
-
-  &:not(.active):hover {
-    border-color: $color-accent;
-    opacity: 1;
-
-    .text {
-      color: $color-accent;
-    }
-
-    .icon {
-      fill: $color-accent;
-    }
-  }
 }
 
 .active {
