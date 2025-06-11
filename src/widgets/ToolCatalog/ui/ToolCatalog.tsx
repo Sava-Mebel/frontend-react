@@ -5,6 +5,7 @@ import { toolItemLists } from 'widgets/ToolCatalog/model/toolItems';
 import { ToolItem } from 'widgets/ToolCatalog/ui/ToolItem/ToolItem';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 import { AppRoutes } from 'shared/config/routerConfig/routerConfig';
+import { useBackgroundSwitcher } from 'shared/lib/hooks/useBackgroundSwitcher/useBackgroundSwitcher';
 
 import cls from './ToolCatalog.module.scss';
 
@@ -15,14 +16,16 @@ interface ToolCatalogProps {
 export const ToolCatalog = ({ className }: ToolCatalogProps) => {
   const [activeItemId, setActiveItemId] = useState<number>(toolItemLists[0].id);
 
+  const activeItem = toolItemLists.find((item) => item.id === activeItemId);
+
+  useBackgroundSwitcher(activeItem?.urlBg);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveItemId((prevId) => {
         const currentIndex = toolItemLists.findIndex((item) => item.id === prevId);
         const nextIndex = (currentIndex + 1) % toolItemLists.length;
-        const nextItem = toolItemLists[nextIndex];
-
-        return nextItem.id;
+        return toolItemLists[nextIndex].id;
       });
     }, 3000);
 
