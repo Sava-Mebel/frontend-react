@@ -114,6 +114,7 @@ $color-text-inverted:  var(--orange-gold-base-color);
 }
 
 .item.active .label,
+.item:hover .label,
 .dropdownItem:hover,
 .dropdownLabel:hover {
   color: var(--orange-gold-base-color);
