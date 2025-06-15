@@ -83,6 +83,13 @@ export const Header = memo((props: HeaderProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathCatalogGroups = '/catalog/groups';
 
+  const closeDropdown = useCallback(() => {
+    setActiveIndex(null);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -94,20 +101,16 @@ export const Header = memo((props: HeaderProps) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
-
-  const closeDropdown = useCallback(() => {
-    setActiveIndex(null);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }, []);
+  }, [closeDropdown]);
 
   const handleMouseEnter = (index: number) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    if (menuItems[index]?.dropdownItems) {
+    const item = menuItems[index];
+    if (item?.dropdownItems) {
       setActiveIndex(index);
+    } else {
+      closeDropdown();
     }
   };
 
@@ -119,7 +122,6 @@ export const Header = memo((props: HeaderProps) => {
 
   const handleLabelClick = (index: number) => {
     if (!menuItems[index].dropdownItems) return;
-
     const isSame = activeIndex === index;
     setActiveIndex(isSame ? null : index);
   };
@@ -177,7 +179,7 @@ export const Header = memo((props: HeaderProps) => {
         className,
       ])}
     >
-      <nav className={cls.nav}>
+      <nav className={cls.nav} onMouseLeave={handleMouseLeave}>
         <ul className={cls.itemList}>
           <Logotype Logo={HeaderIcon} />
 
@@ -194,7 +196,6 @@ export const Header = memo((props: HeaderProps) => {
                   [cls.dimmed]: isDimmed,
                 })}
                 onMouseEnter={() => handleMouseEnter(idx)}
-                onMouseLeave={handleMouseLeave}
               >
                 {item.to ? (
                   <AppLink variant={AppLinkVariant.ROUTE} className={cls.label} to={item.to}>
