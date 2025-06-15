@@ -4,6 +4,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { CatalogGroup } from 'features/CatalogGroup';
 import { CatalogGroupMocked, CatalogGroupType } from 'pages/CatalogPage/model/types/group';
 import { CatalogGroupID } from 'shared/config/routerConfig/routerConfig';
+import { useDocumentTitle } from 'shared/lib/hooks/useDocumentTitle/useDocumentTitle';
 
 import cls from './CatalogPage.module.scss';
 
@@ -13,6 +14,7 @@ interface CatalogProps {
 
 const CatalogPage = memo((props: CatalogProps) => {
   const { className } = props;
+  useDocumentTitle('Каталог');
 
   return (
     <div className={classNames(cls.Catalog, {}, [className])}>
