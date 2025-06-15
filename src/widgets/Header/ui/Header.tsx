@@ -78,11 +78,10 @@ const menuItems: MenuItem[] = [
 export const Header = memo((props: HeaderProps) => {
   const { className, theme = ThemeTypes.NONE } = props;
 
-  const [currentTheme, setCurrentTheme] = useState<ThemeTypes>(theme);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const pathCatalogGroups: string = '/catalog/groups';
+  const pathCatalogGroups = '/catalog/groups';
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -97,53 +96,40 @@ export const Header = memo((props: HeaderProps) => {
     };
   }, []);
 
-  const closeDropdown = useCallback(
-    (resetTheme = true) => {
-      setActiveIndex(null);
-      if (resetTheme) setCurrentTheme(theme);
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    },
-    [theme],
-  );
-
-  const handleMouseEnter = (index: number) => {
+  const closeDropdown = useCallback(() => {
+    setActiveIndex(null);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    const hasDropdown = !!menuItems[index].dropdownItems;
-    setActiveIndex(index);
-    if (hasDropdown) {
-      setCurrentTheme(ThemeTypes.GREY);
-    } else {
-      setCurrentTheme(theme);
+  }, []);
+
+  const handleMouseEnter = (index: number) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    if (menuItems[index]?.dropdownItems) {
+      setActiveIndex(index);
     }
   };
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
-      setActiveIndex(null);
-      setCurrentTheme(theme);
-    }, 400);
+      closeDropdown();
+    }, 300);
   };
 
   const handleLabelClick = (index: number) => {
-    const isOpening = activeIndex !== index;
-    setActiveIndex(isOpening ? index : null);
+    if (!menuItems[index].dropdownItems) return;
+
+    const isSame = activeIndex === index;
+    setActiveIndex(isSame ? null : index);
   };
 
   const handleLinkClick = () => {
-    setActiveIndex(null);
-    setCurrentTheme(theme);
     closeDropdown();
   };
 
   const renderDropdownItems = (items: DropdownItem[] = []) => (
-    <div
-      className={classNames(cls.dropdown, { [cls[currentTheme]]: currentTheme })}
-      ref={dropdownRef}
-    >
+    <div className={classNames(cls.dropdown, { [cls.opened]: isDropdownOpened })} ref={dropdownRef}>
       {items.map((item, index) => {
         if (item.type === 'item') {
           return (
@@ -183,8 +169,14 @@ export const Header = memo((props: HeaderProps) => {
     </div>
   );
 
+  const isDropdownOpened = activeIndex !== null && !!menuItems[activeIndex]?.dropdownItems;
+
   return (
-    <header className={classNames(cls.Header, { [cls[currentTheme]]: currentTheme }, [className])}>
+    <header
+      className={classNames(cls.Header, { [cls[theme]]: theme, [cls.opened]: isDropdownOpened }, [
+        className,
+      ])}
+    >
       <nav className={cls.nav}>
         <ul className={cls.itemList}>
           <Logotype Logo={HeaderIcon} />
@@ -209,7 +201,7 @@ export const Header = memo((props: HeaderProps) => {
                     {item.label}
                   </AppLink>
                 ) : (
-                  <h2 className={cls.label} onClick={() => hasDropdown && handleLabelClick(idx)}>
+                  <h2 className={cls.label} onClick={() => handleLabelClick(idx)}>
                     {item.label}
                   </h2>
                 )}
