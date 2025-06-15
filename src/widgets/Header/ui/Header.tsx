@@ -19,24 +19,24 @@ interface HeaderProps {
   theme?: ThemeTypes;
 }
 
-interface DropdownItem {
-  label: string;
-  to: string;
-}
+type DropdownItem =
+  | { type: 'item'; label: string; to: string }
+  | { type: 'group'; label: string; subItems: { label: string; to: string }[] };
 
 interface MenuItem {
   label: string;
   to?: string;
-  dropdownItems?: (DropdownItem | { label: string; subItems: DropdownItem[] })[];
+  dropdownItems?: DropdownItem[];
 }
 
 const menuItems: MenuItem[] = [
   {
     label: 'Каталог',
     dropdownItems: [
-      { label: 'Кухонный гарнитур', to: `/${CatalogGroupID.KITCHEN_SETS}` },
-      { label: 'Прихожие', to: `/${CatalogGroupID.WINDOW_WORKSPACES}` },
+      { type: 'item', label: 'Кухонный гарнитур', to: `/${CatalogGroupID.KITCHEN_SETS}` },
+      { type: 'item', label: 'Прихожие', to: `/${CatalogGroupID.WINDOW_WORKSPACES}` },
       {
+        type: 'group',
         label: 'Шкафы',
         subItems: [
           { label: 'Распашные', to: `/${CatalogGroupID.SWING_WARDROBES}` },
@@ -44,13 +44,25 @@ const menuItems: MenuItem[] = [
           { label: 'Шкаф кровать', to: `/${CatalogGroupID.WARDROBE_BED}` },
         ],
       },
-      { label: 'Гардеробные', to: `/${CatalogGroupID.DRESSING_ROOMS}` },
-      { label: 'Рабочие зоны у окна', to: `/${CatalogGroupID.WINDOW_WORKSPACES}` },
-      { label: 'Зеркала с подвесными тумбами', to: `/${CatalogGroupID.MIRRORS_WITH_CABINETS}` },
-      { label: 'Мебель для ванной / туалета', to: `/${CatalogGroupID.BATHROOM_FURNITURE}` },
-      { label: 'Мебель для спальни', to: `/${CatalogGroupID.BEDROOM_FURNITURE}` },
-      { label: 'Мебель для столовой', to: `/${CatalogGroupID.DINING_ROOM_FURNITURE}` },
-      { label: 'Другая мебель', to: `/${CatalogGroupID.OTHER_FURNITURE}` },
+      { type: 'item', label: 'Гардеробные', to: `/${CatalogGroupID.DRESSING_ROOMS}` },
+      { type: 'item', label: 'Рабочие зоны у окна', to: `/${CatalogGroupID.WINDOW_WORKSPACES}` },
+      {
+        type: 'item',
+        label: 'Зеркала с подвесными тумбами',
+        to: `/${CatalogGroupID.MIRRORS_WITH_CABINETS}`,
+      },
+      {
+        type: 'item',
+        label: 'Мебель для ванной / туалета',
+        to: `/${CatalogGroupID.BATHROOM_FURNITURE}`,
+      },
+      { type: 'item', label: 'Мебель для спальни', to: `/${CatalogGroupID.BEDROOM_FURNITURE}` },
+      {
+        type: 'item',
+        label: 'Мебель для столовой',
+        to: `/${CatalogGroupID.DINING_ROOM_FURNITURE}`,
+      },
+      { type: 'item', label: 'Другая мебель', to: `/${CatalogGroupID.OTHER_FURNITURE}` },
     ],
   },
   {
@@ -65,6 +77,8 @@ const menuItems: MenuItem[] = [
 
 export const Header = memo((props: HeaderProps) => {
   const { className, theme = ThemeTypes.NONE } = props;
+
+  const [currentTheme, setCurrentTheme] = useState<ThemeTypes>(theme);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -83,79 +97,94 @@ export const Header = memo((props: HeaderProps) => {
     };
   }, []);
 
-  const closeDropdown = useCallback(() => {
-    setActiveIndex(null);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  }, []);
+  const closeDropdown = useCallback(
+    (resetTheme = true) => {
+      setActiveIndex(null);
+      if (resetTheme) setCurrentTheme(theme);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    },
+    [theme],
+  );
 
   const handleMouseEnter = (index: number) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
+    const hasDropdown = !!menuItems[index].dropdownItems;
     setActiveIndex(index);
+    if (hasDropdown) {
+      setCurrentTheme(ThemeTypes.GREY);
+    } else {
+      setCurrentTheme(theme);
+    }
   };
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
-      closeDropdown();
+      setActiveIndex(null);
+      setCurrentTheme(theme);
     }, 400);
   };
 
   const handleLabelClick = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    const isOpening = activeIndex !== index;
+    setActiveIndex(isOpening ? index : null);
   };
 
   const handleLinkClick = () => {
+    setActiveIndex(null);
+    setCurrentTheme(theme);
     closeDropdown();
   };
 
-  const renderDropdownItems = (items: MenuItem['dropdownItems']) => {
-    return (
-      <div className={classNames(cls.dropdown, { [cls[theme]]: theme })} ref={dropdownRef}>
-        {items?.map((item, index) => {
-          if ('to' in item) {
-            return (
-              <AppLink
-                key={index}
-                variant={AppLinkVariant.ROUTE}
-                className={cls.dropdownItem}
-                to={`${pathCatalogGroups}${item.to}`}
-                onClick={handleLinkClick}
-              >
-                {item.label}
-              </AppLink>
-            );
-          }
+  const renderDropdownItems = (items: DropdownItem[] = []) => (
+    <div
+      className={classNames(cls.dropdown, { [cls[currentTheme]]: currentTheme })}
+      ref={dropdownRef}
+    >
+      {items.map((item, index) => {
+        if (item.type === 'item') {
+          return (
+            <AppLink
+              key={index}
+              variant={AppLinkVariant.ROUTE}
+              className={cls.dropdownItem}
+              to={`${pathCatalogGroups}${item.to}`}
+              onClick={handleLinkClick}
+            >
+              {item.label}
+            </AppLink>
+          );
+        }
 
-          if ('subItems' in item) {
-            return (
-              <ul key={index} className={cls.dropdownGroup}>
-                <span className={cls.dropdownLabel}>{item.label}</span>
-                {item.subItems.map((sub, subIdx) => (
-                  <li key={subIdx} className={cls.dropdownItem}>
-                    <AppLink
-                      variant={AppLinkVariant.ROUTE}
-                      to={`${pathCatalogGroups}${sub.to}`}
-                      onClick={handleLinkClick}
-                    >
-                      {sub.label}
-                    </AppLink>
-                  </li>
-                ))}
-              </ul>
-            );
-          }
+        if (item.type === 'group') {
+          return (
+            <ul key={index} className={cls.dropdownGroup}>
+              <span className={cls.dropdownLabel}>{item.label}</span>
+              {item.subItems.map((sub, subIdx) => (
+                <li key={subIdx} className={cls.dropdownItem}>
+                  <AppLink
+                    variant={AppLinkVariant.ROUTE}
+                    to={`${pathCatalogGroups}${sub.to}`}
+                    onClick={handleLinkClick}
+                  >
+                    {sub.label}
+                  </AppLink>
+                </li>
+              ))}
+            </ul>
+          );
+        }
 
-          return null;
-        })}
-      </div>
-    );
-  };
+        return null;
+      })}
+    </div>
+  );
 
   return (
-    <header className={classNames(cls.Header, { [cls[theme]]: theme }, [className])}>
+    <header className={classNames(cls.Header, { [cls[currentTheme]]: currentTheme }, [className])}>
       <nav className={cls.nav}>
         <ul className={cls.itemList}>
           <Logotype Logo={HeaderIcon} />
