@@ -14,6 +14,11 @@ $color-text-inverted:  var(--orange-gold-base-color);
   &.grey {
     background: var(--grey-5-base-color);
   }
+
+  &.opened {
+    background: var(--grey-5-base-color);
+  }
+
 }
 
 .nav {
@@ -40,7 +45,7 @@ $color-text-inverted:  var(--orange-gold-base-color);
   z-index: 100;
   padding: 18px 5vw 18px 346px;
 
-  &.grey {
+  &.opened {
     background: var(--grey-5-base-color);
   }
 }
