@@ -5,6 +5,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { CatalogGroupID } from 'shared/config/routerConfig/routerConfig';
 import { CatalogGroup } from 'features/CatalogGroup';
 import { CatalogGroupMocked } from 'pages/CatalogPage/model/types/group';
+import { useDocumentTitle } from 'shared/lib/hooks/useDocumentTitle/useDocumentTitle';
 
 import cls from './CatalogGroup.module.scss';
 
@@ -19,12 +20,13 @@ const isCatalogGroupId = (id?: string): id is CatalogGroupID => {
 const CatalogGroupPage = memo((props: CatalogGroupPageProps) => {
   const { className } = props;
   const { groupId } = useParams<{ groupId: string }>();
+  const currentGroup = CatalogGroupMocked.find((group) => group.groupId === groupId);
+
+  useDocumentTitle(currentGroup?.title || '');
 
   if (!isCatalogGroupId(groupId)) {
     return <div className={classNames(cls.CatalogGroup, {}, [className])}>Группа не найдена</div>;
   }
-
-  const currentGroup = CatalogGroupMocked.find((group) => group.groupId === groupId);
 
   if (!currentGroup) {
     return (
