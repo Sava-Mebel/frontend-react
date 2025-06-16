@@ -1,0 +1,44 @@
+.Tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tabBtnItems {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--gray-1-base-color);
+  min-height: 20px;
+  background: var(--grey-5-base-color);
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  color: var(--white-base-color);
+  opacity: 1;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.active {
+    border: 1px solid var(--orange-gold-base-color);
+    color: var(--orange-gold-base-color);
+
+    &:hover {
+      opacity: 1;
+      cursor: not-allowed;
+    }
+  }
+}
