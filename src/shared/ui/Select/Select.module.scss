@@ -1,3 +1,6 @@
+$bg-color: #3B3B3B;
+$bg-color-accent: var(--white-transparent-10);
+
 .Select {
   position: relative;
   width: 100%;
@@ -9,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: rgba(196, 196, 196, 0.10);
+  background: $bg-color;
   min-height: 40px;
   border-radius: 5px;
   padding: 9px 18px;
@@ -18,7 +21,7 @@
 
 
   &.opened {
-    background: #F6F6F6;
+    background: $bg-color;
     color: var(--orange-gold-color-base);
   }
 
@@ -48,7 +51,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #F6F6F6;
+  background: $bg-color;
   border-radius: 0 0 5px 5px;
   z-index: 100;
   margin-top: 2px;
@@ -79,7 +82,15 @@
   justify-content: start;
 
   &:hover {
-    background: var(--withe-color-base);
-    color: var(--orange-gold-color-base);
+    background: $bg-color-accent;
+    color: var(--orange-gold-base-color);
   }
+}
+
+.trigger, option {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 155%;
+  color: var(--white-base-color);
 }
