@@ -12,17 +12,17 @@
   transition: border-color 0.2s;
 
   &.active {
-    border: 2px solid var(--orange-gold-color-base);
+    border: 2px solid var(--orange-gold-base-color);
   }
 
   &:hover {
-    border: 1px solid var(--orange-gold-color-base);
+    border: 1px solid var(--orange-gold-base-color);
     opacity: 0.8;
     cursor: pointer;
 
     &.active {
       opacity: 1;
-      border: 2px solid var(--orange-gold-color-base);
+      border: 2px solid var(--orange-gold-base-color);
       cursor: not-allowed;
     }
   }
