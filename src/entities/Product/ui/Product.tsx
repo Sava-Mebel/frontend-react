@@ -3,15 +3,16 @@ import { Badge, BadgeTypes } from 'shared/ui/Badge/Badge';
 import { Button } from 'shared/ui/Button/Button';
 import { Select } from 'shared/ui/Select/Select';
 import { PreviewGallery } from 'shared/ui/PreviewGallery/PreviewGallery';
-import { DataFeedbackType, FeedbackCard } from 'entities/Product/ui/FeedbackCard/FeedbackCard';
+import { DataFeedbackType } from 'entities/Product/ui/FeedbackCard/FeedbackCard';
 import { ColorTool } from 'entities/Product/ui/ColorTool/ColorTool';
+import { Tabs } from 'shared/ui/Tabs/Tabs';
+import { productTabs } from 'entities/Product/model/tabs';
 
 import cls from './Product.module.scss';
 
 interface ProductProps {
   className?: string;
 }
-
 const feedbackMocked: DataFeedbackType[] = [
   {
     title: 'Кухня "Nordic" (скандинавский стиль)',
@@ -57,14 +58,16 @@ export const Product = ({ className }: ProductProps) => {
         </div>
       </div>
 
-      <div className={cls.feedback}>
-        <h3 className={cls.feedbackTitle}>Отзывы на данную мебель:</h3>
-        <div className={cls.feedbackList}>
-          {feedbackMocked.map((item, index) => (
-            <FeedbackCard dataFeedback={item} key={index + 1} />
-          ))}
-        </div>
-      </div>
+      <Tabs tabs={productTabs} defaultActive={0} />
+
+      {/*<div className={cls.feedback}>*/}
+      {/*  <h3 className={cls.feedbackTitle}>Отзывы на данную мебель:</h3>*/}
+      {/*  <div className={cls.feedbackList}>*/}
+      {/*    {feedbackMocked.map((item, index) => (*/}
+      {/*      <FeedbackCard dataFeedback={item} key={index + 1} />*/}
+      {/*    ))}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
   );
 };
