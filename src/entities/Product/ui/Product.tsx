@@ -46,7 +46,7 @@ export const Product = ({ className }: ProductProps) => {
             <p className={cls.price}>от 95 000 ₽</p>
             <div className={cls.colors}>
               <span className={cls.spanTitle}>Выберете цвет</span>
-              <ColorTool />
+              <ColorTool className={cls.colorTool} />
             </div>
             <div className={cls.with}>
               <span className={cls.spanTitle}>Выберете размер</span>
