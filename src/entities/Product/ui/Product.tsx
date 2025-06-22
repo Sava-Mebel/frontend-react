@@ -124,7 +124,6 @@ const WarrantyAndFeedback = () => (
     </TabContent>
     <TabContent title="Отзывы" link={{ label: 'Оставить отзыв', to: '/review' }}>
       <div className={cls.feedback}>
-        <h3 className={cls.feedbackTitle}>Отзывы на данную мебель:</h3>
         <div className={cls.feedbackList}>
           {feedbackMocked.map((item: FeedbackType) => (
             <FeedbackCard dataFeedback={item} key={item.id} />
