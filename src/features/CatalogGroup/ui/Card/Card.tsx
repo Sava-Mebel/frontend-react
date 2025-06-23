@@ -29,7 +29,10 @@ export const Card = (props: CardProps) => {
           src={'https://www.arboro.de/blog/wp-content/uploads/2010/05/img-tag.jpg'}
           alt="img"
         />
-        <figcaption className={cls.title}>Лол njg kjg</figcaption>
+        <figcaption className={cls.header}>
+          <h3 className={cls.title}>Заголовок для карточки</h3>
+          <p className={cls.description}>Изготовление индивидуальной мебели на заказ</p>
+        </figcaption>
       </figure>
     </AppLink>
   );
