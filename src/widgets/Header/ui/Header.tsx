@@ -32,6 +32,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     label: 'Каталог',
+    to: RoutePath.catalog,
     dropdownItems: [
       { type: 'item', label: 'Кухонный гарнитур', to: `/${CatalogGroupID.KITCHEN_SETS}` },
       { type: 'item', label: 'Прихожие', to: `/${CatalogGroupID.WINDOW_WORKSPACES}` },
@@ -198,7 +199,12 @@ export const Header = memo((props: HeaderProps) => {
                 onMouseEnter={() => handleMouseEnter(idx)}
               >
                 {item.to ? (
-                  <AppLink variant={AppLinkVariant.ROUTE} className={cls.label} to={item.to}>
+                  <AppLink
+                    variant={AppLinkVariant.ROUTE}
+                    className={cls.label}
+                    to={item.to}
+                    onClick={() => handleLabelClick(idx)}
+                  >
                     {item.label}
                   </AppLink>
                 ) : (
