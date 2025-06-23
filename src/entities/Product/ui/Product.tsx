@@ -17,15 +17,42 @@ interface ProductProps {
 
 const SIZE_OPTIONS = ['250х450х60', '250х450х70', '250х450х80', 'Опции как пример'];
 
+const characteristics = [
+  {
+    title: 'Фасад',
+    description: 'шпон Орех американский',
+  },
+  {
+    title: 'Корпус',
+    description: 'ЛДСП Эггер, шпон Орех американский',
+  },
+  {
+    title: 'Дверные системы',
+    description: 'распашные фасады',
+  },
+  {
+    title: 'Тип мебели',
+    description: 'распашные шкафы, столы, тумбы, стеновые панели',
+  },
+  {
+    title: 'Вид шкафа',
+    description: 'корпусной',
+  },
+];
+
 const ProductCharacteristics = () => (
   <TabContent title="Характеристики">
     <div className={cls.info}>
-      {[...Array(4)].map((_, i) => (
+      {characteristics.map(({ title, description }, i) => (
         <div key={i} className={cls.item}>
-          <span></span>
-          <p></p>
+          <span className={cls.itemTitle}>
+            {title}:{'\u00A0'}
+          </span>
+          <p className={cls.itemDescription}>{description}</p>
         </div>
       ))}
+
+      <br />
 
       <div>
         <p className={cls.tabContext}>

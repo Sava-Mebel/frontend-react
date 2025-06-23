@@ -18,10 +18,6 @@ $accent-color: var(--orange-gold-base-color);
   gap: 48px;
 }
 
-.info {
-  padding: 32px;
-}
-
 .badges {
   display: flex;
   width: max-content;
@@ -107,4 +103,25 @@ $accent-color: var(--orange-gold-base-color);
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.item {
+
+  display: flex;
+
+  & .itemTitle {
+    color: var(--white-base-color);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  & .itemDescription {
+    color: var(--white-base-color);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
