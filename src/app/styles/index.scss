@@ -25,6 +25,7 @@ body {
   background-repeat: no-repeat;
   transition: opacity 1s ease-in-out;
   opacity: 0;
+  filter: brightness(0.4);
 }
 
 .app {
