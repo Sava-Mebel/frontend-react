@@ -19,9 +19,6 @@ function App() {
   return (
     <div className={'app'}>
       <Header theme={headerMode} />
-      <Header theme={headerMode} />
-      <Header theme={headerMode} />
-      <Header theme={headerMode} />
       <main className={`app__main ${footerMode === 'fixed' ? 'with-fixed-footer' : ''}`}>
         <Suspense fallback={null}>
           <AppRouter />
