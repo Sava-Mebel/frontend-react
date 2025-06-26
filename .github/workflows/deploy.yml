@@ -1,4 +1,4 @@
-name: Deploy Frontend to Server
+name: 🚀 Deploy Frontend to Server
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repository
+      - name: 📥 Checkout repo
         uses: actions/checkout@v4
 
       - name: 🔧 Setup Node.js
@@ -18,26 +18,54 @@ jobs:
         with:
           node-version: ${{ secrets.NODE_VERSION || '20' }}
 
-      - name: 📦 Install dependencies
+      - name: 📦 Install deps
         run: npm ci
 
       - name: 🏗️ Build project
         run: NODE_ENV=production npm run build:prod
 
-      - name: 🧹 Очистить целевую папку на сервере
+      - name: 🔑 Create SSH key
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+          chmod 600 private_key
+
+      - name: 🧹 Clean deploy dir (remote)
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            rm -rf ${{ secrets.DEPLOY_PATH }}/*
+            sudo rm -rf ${{ secrets.DEPLOY_PATH }}/*
+            sudo mkdir -p ${{ secrets.DEPLOY_PATH }}
+            sudo chown -R $USER:$USER ${{ secrets.DEPLOY_PATH }}
+            sudo chmod -R 755 ${{ secrets.DEPLOY_PATH }}
 
-      - name: 🚀 Deploy via SCP
+      - name: 🚀 Deploy files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "build/"
+          source: "build/*"
           target: ${{ secrets.DEPLOY_PATH }}
+
+      - name: 🔐 Fix permissions
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo chown -R www-data:www-data ${{ secrets.DEPLOY_PATH }}
+            sudo find ${{ secrets.DEPLOY_PATH }} -type d -exec chmod 755 {} \;
+            sudo find ${{ secrets.DEPLOY_PATH }} -type f -exec chmod 644 {} \;
+
+      # - name: 🔁 Reload nginx (опционально)
+      #   uses: appleboy/ssh-action@v0.1.7
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_USER }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     script: |
+      #       sudo systemctl reload nginx
