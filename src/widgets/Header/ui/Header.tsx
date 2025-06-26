@@ -32,7 +32,6 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     label: 'Каталог',
-    to: RoutePath.catalog,
     dropdownItems: [
       { type: 'item', label: 'Кухонный гарнитур', to: `/${CatalogGroupID.KITCHEN_SETS}` },
       { type: 'item', label: 'Прихожие', to: `/${CatalogGroupID.WINDOW_WORKSPACES}` },
