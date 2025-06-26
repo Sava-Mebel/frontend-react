@@ -22,12 +22,16 @@ jobs:
         run: npm ci
 
       - name: 🏗️ Build project
-        run:  NODE_ENV=production npm run build:prod
+        run: NODE_ENV=production npm run build:prod
 
-      - name: 📄 Create SSH private key file
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
-          chmod 600 private_key
+      - name: 🧹 Очистить целевую папку на сервере
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            rm -rf ${{ secrets.DEPLOY_PATH }}/*
 
       - name: 🚀 Deploy via SCP
         uses: appleboy/scp-action@v0.1.7
@@ -35,5 +39,5 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "build/*"
+          source: "build/"
           target: ${{ secrets.DEPLOY_PATH }}
