@@ -31,10 +31,9 @@ body {
 .app {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  min-width: 320px;
-  max-width: 1024px;
+  align-items:  center;
   margin: 0 auto;
+  width: 100%;
   min-height: 100vh;
   color: #FFFFFF;
 
