@@ -34,6 +34,6 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key_path: private_key
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "build/*"
           target: ${{ secrets.DEPLOY_PATH }}
