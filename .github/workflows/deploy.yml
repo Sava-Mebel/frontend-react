@@ -18,17 +18,22 @@ jobs:
         with:
           node-version: ${{ secrets.NODE_VERSION || '20' }}
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm ci
 
-      - name: Build project
-        run: npm run build:prod
+      - name: 🏗️ Build project
+        run:  NODE_ENV=production npm run build:prod
 
-      - name: Deploy via SCP
+      - name: 📄 Create SSH private key file
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+          chmod 600 private_key
+
+      - name: 🚀 Deploy via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key_path: private_key
           source: "build/*"
           target: ${{ secrets.DEPLOY_PATH }}
