@@ -6,6 +6,7 @@ import HeaderIcon from 'shared/assets/logo/header-logo.svg';
 import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 import { CatalogGroupID, RoutePath } from 'shared/config/routerConfig/routerConfig';
+import { Modal } from 'shared/ui/Madal/Modal';
 
 import cls from './Header.module.scss';
 
@@ -80,6 +81,7 @@ export const Header = memo((props: HeaderProps) => {
   const { className, theme = ThemeTypes.NONE } = props;
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathCatalogGroups = '/catalog/groups';
@@ -103,6 +105,12 @@ export const Header = memo((props: HeaderProps) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [closeDropdown]);
+
+  console.log('Status Model Click', isModalOpen);
+
+  const handleModalOpened = () => {
+    setIsModalOpen((prevState) => !prevState);
+  };
 
   const handleMouseEnter = (index: number) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -218,9 +226,16 @@ export const Header = memo((props: HeaderProps) => {
             );
           })}
 
-          <Button theme={ButtonThemeTypes.OUTLINE}>Позвонить мне</Button>
+          <Button theme={ButtonThemeTypes.OUTLINE} onClick={handleModalOpened}>
+            Позвонить мне
+          </Button>
         </ul>
       </nav>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        Модалка открыта
+        {isModalOpen && <div>Modal должен быть открыт</div>}
+      </Modal>
     </header>
   );
 });
