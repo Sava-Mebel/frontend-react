@@ -12,9 +12,11 @@ export const useBackgroundSwitcher = (
   const activeLayerRef = useRef<1 | 2>(1);
   const lastImageRef = useRef<string | null>(null);
   const isTransitioningRef = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (!imageUrl) return;
+
     if (imageUrl === lastImageRef.current || isTransitioningRef.current) return;
 
     const bg1 = document.getElementById('bg1') as HTMLElement | null;
@@ -37,7 +39,7 @@ export const useBackgroundSwitcher = (
       next.style.opacity = '1';
       active.style.opacity = '0';
 
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         activeLayerRef.current = activeLayerRef.current === 1 ? 2 : 1;
         lastImageRef.current = imageUrl;
         isTransitioningRef.current = false;
@@ -45,6 +47,27 @@ export const useBackgroundSwitcher = (
     };
 
     img.onerror = () => {
+      isTransitioningRef.current = false;
+    };
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+
+      const resetLayer = (el: HTMLElement | null) => {
+        if (el) {
+          el.style.backgroundImage = '';
+          el.style.opacity = '0';
+          el.style.transition = '';
+        }
+      };
+
+      resetLayer(bg1);
+      resetLayer(bg2);
+
+      lastImageRef.current = null;
       isTransitioningRef.current = false;
     };
   }, [imageUrl, fadeDuration]);
