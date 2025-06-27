@@ -6,6 +6,7 @@ import HeaderIcon from 'shared/assets/logo/header-logo.svg';
 import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 import { DropdownItem, menuItems } from 'widgets/Header/model/types/menuItems';
+import { ContactClientModal } from 'widgets/modal';
 
 import cls from './Header.module.scss';
 
@@ -23,6 +24,7 @@ export const Header = memo((props: HeaderProps) => {
   const { className, theme = ThemeTypes.NONE } = props;
 
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [opened, setOpened] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathCatalogGroups = '/catalog/groups';
@@ -72,6 +74,10 @@ export const Header = memo((props: HeaderProps) => {
 
   const handleLinkClick = () => {
     closeDropdown();
+  };
+
+  const handleModalOpen = () => {
+    setOpened((prevState) => !prevState);
   };
 
   const renderDropdownItems = (items: DropdownItem[] = []) => (
@@ -161,9 +167,12 @@ export const Header = memo((props: HeaderProps) => {
             );
           })}
 
-          <Button theme={ButtonThemeTypes.OUTLINE}>Позвонить мне</Button>
+          <Button theme={ButtonThemeTypes.OUTLINE} onClick={handleModalOpen}>
+            Позвонить мне
+          </Button>
         </ul>
       </nav>
+      <ContactClientModal isOpen={opened} onClose={handleModalOpen} />
     </header>
   );
 });
