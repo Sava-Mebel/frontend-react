@@ -6,6 +6,7 @@ import { CatalogGroupID } from 'shared/config/routerConfig/routerConfig';
 import { CatalogGroup } from 'features/CatalogGroup';
 import { CatalogGroupMocked } from 'pages/CatalogPage/model/types/group';
 import { useDocumentTitle } from 'shared/lib/hooks/useDocumentTitle/useDocumentTitle';
+import { useBackgroundColor } from 'shared/lib/hooks/useBackgroundManager/useBackgroundManager';
 
 import cls from './CatalogGroup.module.scss';
 
@@ -23,6 +24,7 @@ const CatalogGroupPage = memo((props: CatalogGroupPageProps) => {
   const currentGroup = CatalogGroupMocked.find((group) => group.groupId === groupId);
 
   useDocumentTitle(currentGroup?.title || '');
+  useBackgroundColor({ color: 'var(--gray-6-base-color)' });
 
   if (!isCatalogGroupId(groupId)) {
     return <div className={classNames(cls.CatalogGroup, {}, [className])}>Группа не найдена</div>;

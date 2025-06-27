@@ -7,6 +7,7 @@ import { ColorTool } from 'entities/Product/ui/ColorTool/ColorTool';
 import { Tabs } from 'shared/ui/Tabs/Tabs';
 import { TabContent } from 'shared/ui/TabContent/TabContent';
 import { FeedbackCard } from 'entities/Product/ui/FeedbackCard/FeedbackCard';
+import { useBackgroundColor } from 'shared/lib/hooks/useBackgroundManager/useBackgroundManager';
 
 import { feedbackMocked, FeedbackType } from '../model/feedback';
 import cls from './Product.module.scss';
@@ -207,6 +208,7 @@ const ProductBadges = () => (
 );
 
 export const Product = ({ className }: ProductProps) => {
+  useBackgroundColor({ color: 'var(--gray-6-base-color)' });
   const productTabs = [
     { label: 'Характеристики', content: <ProductCharacteristics /> },
     { label: 'Доставка и оплата', content: <DeliveryAndPayment /> },

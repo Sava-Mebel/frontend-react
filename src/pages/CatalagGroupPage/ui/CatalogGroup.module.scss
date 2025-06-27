@@ -1,5 +1,6 @@
 .CatalogGroup {
-  padding: 64px var(--pd-horizontal-base);
+  width: 100%;
+  max-width: 1440px;
   background: var(--gray-6-base-color);
   min-height: var(--height-container);
 }

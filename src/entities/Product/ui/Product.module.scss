@@ -3,6 +3,8 @@ $sub-text-color: var(--gray-muted-color);
 $accent-color: var(--orange-gold-base-color);
 
 .Product {
+  width: 100%;
+  max-width: 1440px;
   display: flex;
   flex-direction: column;
   gap: 50px;
