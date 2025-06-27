@@ -6,7 +6,7 @@ import HeaderIcon from 'shared/assets/logo/header-logo.svg';
 import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 import { CatalogGroupID, RoutePath } from 'shared/config/routerConfig/routerConfig';
-import { Modal } from 'shared/ui/Madal/Modal';
+import { ContactClientModal } from 'widgets/modal';
 
 import cls from './Header.module.scss';
 
@@ -232,10 +232,7 @@ export const Header = memo((props: HeaderProps) => {
         </ul>
       </nav>
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        Модалка открыта
-        {isModalOpen && <div>Modal должен быть открыт</div>}
-      </Modal>
+      <ContactClientModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </header>
   );
 });
