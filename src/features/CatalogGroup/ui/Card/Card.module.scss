@@ -25,29 +25,21 @@ $text-color-default: #FFF;
   transition: all 0.3s ease;
 
   &:hover {
-    background: $hover-bg;
-    border-color: $hover-border;
-    color: $hover-text;
+    background: rgba(255, 255, 255, 0.20);
+    color: var(--white-base-color);
   }
 
   // Модификаторы
-  &:has(.TOP_PICK) {
-    border-color: $top-pick-color;
-    background: $top-pick-accent-color;
-
-    &:hover {
-      background: #F5F9EE;
-      color: #546D28;
-    }
+  &:has(.TOP_PICK):hover {
+    border: 2px solid #9BC650;
+    background: rgba(155, 198, 80, 0.75);
+    color: var(--white-base-color);
   }
 
-  &:has(.CLIENT_PICK) {
-    border-color: $client-pick-color;
-    background: $client-pick-accent-color;
-
-    &:hover {
-      background: #F5F9EE;
-    }
+  &:has(.CLIENT_PICK):hover {
+    border: 2px solid #F2B65F;
+    background: #C09352;
+    color: var(--white-base-color);
   }
 
   .img {
