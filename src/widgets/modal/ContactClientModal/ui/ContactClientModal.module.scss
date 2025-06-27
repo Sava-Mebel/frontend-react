@@ -1,0 +1,56 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: rgba(34, 37, 43, 0.7);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+
+  .link1 {
+    color: var(--orange-gold-base-color);
+    font-weight: 600;
+    transition: opacity 0.2s ease-in;
+
+    &:hover {
+      opacity:  0.7;
+    }
+  }
+
+  .phone {
+    font-weight: 600;
+
+    &:hover {
+      transition: opacity 0.2s ease-in;
+      opacity:  0.7;
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .link {
+      position: relative;
+      color: rgba(34, 37, 43, 0.70);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 20px;
+
+      &:not(:first-child)::before {
+        content: '|';
+        margin: 0 8px;
+      }
+    }
+
+  }
+}
