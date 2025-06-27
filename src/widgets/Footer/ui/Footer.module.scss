@@ -2,6 +2,9 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
 
 .Footer {
   width: 100%;
+  background: var(--grey-5-base-color);
+  display:  flex;
+  justify-content: center;
 
   &.fixed {
     position: fixed;
@@ -18,10 +21,11 @@ $padding: var(--pd-vertical-base) var(--pd-horizontal-base);
 }
 
 .bottom {
+  width:  100%;
+  max-width: 1440px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--grey-5-base-color);
   height: var(--footer-height);
   padding: $padding;
 }
