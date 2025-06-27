@@ -6,7 +6,9 @@
 .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 50px;
+  gap: 18px;
 }
 
 .title {
@@ -28,19 +30,21 @@
 }
 
 .link {
+
   display: flex;
   align-items: center;
-  max-width: max-content;
-  min-height: max-content;
+  flex-wrap: nowrap;
+  width: 220px;
+  min-height: 24px;
   border-radius: 18px;
   border: 1px solid var(--orange-gold-base-color);
   background: var(--orange-gold-base-color);
-  padding: 12px 24px;
+  padding: 12px;
   opacity: 1;
   transition: all 0.3s ease-in-out;
 
   color: #FFF;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
