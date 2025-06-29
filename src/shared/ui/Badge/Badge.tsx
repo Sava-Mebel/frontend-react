@@ -32,7 +32,7 @@ export const Badge = (props: BadgeProps) => {
   return (
     <span className={classNames(cls.Badge, modsBadge, [className])}>
       {imageSrc && <img src={imageSrc} className={cls.badgeIcon} alt="Бейджик" />}
-      {badgeText}
+      <p className={cls.title}>{badgeText}</p>
     </span>
   );
 };
