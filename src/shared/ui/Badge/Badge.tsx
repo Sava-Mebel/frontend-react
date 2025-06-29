@@ -13,8 +13,8 @@ const BADGE_TEXTS = {
   [BadgeTypes.STARS_PICK]: '5/5 ⭐⭐⭐⭐⭐',
 };
 const BADGE_IMG = {
-  [BadgeTypes.TOP_PICK]: '/media/badge/TopPick.png',
-  [BadgeTypes.CLIENT_PICK]: '/media/badge/ClientPick.png',
+  [BadgeTypes.TOP_PICK]: '/media/badge/star.svg',
+  [BadgeTypes.CLIENT_PICK]: '/media/badge/thumbsUp.svg',
   [BadgeTypes.STARS_PICK]: null,
 };
 
