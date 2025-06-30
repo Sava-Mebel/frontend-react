@@ -12,12 +12,9 @@ interface ToolItemProps {
 
 export const ToolItem = ({ item, isActive, onClick }: ToolItemProps) => {
   const { Icon, text } = item;
-  console.log('isActive', isActive);
   const mods: Mods = {
     [cls.active]: isActive,
   };
-
-  console.log('mods', mods);
 
   return (
     <Button className={classNames(cls.ToolItem, mods, [])} onClick={onClick}>
