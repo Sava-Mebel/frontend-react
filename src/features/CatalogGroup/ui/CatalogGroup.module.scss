@@ -1,14 +1,20 @@
 .CatalogGroup {
-
   padding: 64px var(--pd-horizontal-base) 64px;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 50px;
+  align-items: flex-start;
   gap: 18px;
+  margin-bottom: 50px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.textContent {
+  flex: 1;
+  min-width: 0;
 }
 
 .title {
@@ -19,6 +25,12 @@
   font-weight: 700;
   line-height: normal;
   margin-bottom: 12px;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  hyphens: auto;
 }
 
 .subTitle {
@@ -27,14 +39,21 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  hyphens: auto;
 }
 
 .link {
+  flex-shrink: 0;
+  width: 230px;
 
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  width: 220px;
   min-height: 24px;
   border-radius: 18px;
   border: 1px solid var(--orange-gold-base-color);
@@ -48,6 +67,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  white-space: nowrap;
 
   &:hover {
     background: var(--orange-hober-base-color);
