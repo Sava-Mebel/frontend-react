@@ -15,6 +15,7 @@ export type AppRoutesProps = RouteProps & {
 export enum CatalogGroupID {
   KITCHEN_SETS = 'kitchen-sets',
   HALLWAYS = 'hallways',
+  CABINETS = 'Cabinets',
   SWING_WARDROBES = 'swing-wardrobes',
   SLIDING_WARDROBES = 'sliding-wardrobes',
   WARDROBE_BED = 'wardrobe-bed',

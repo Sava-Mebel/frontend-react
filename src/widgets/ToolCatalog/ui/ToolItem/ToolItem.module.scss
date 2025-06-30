@@ -18,11 +18,37 @@ $color-accent: var(--orange-gold-base-color);
   background-color: transparent;
   cursor: pointer;
 
-  transition:
-          opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
-          transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
-          background-color 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
-          border-color 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+  transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+  background-color 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+  border-color 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  &:not(.active):hover {
+    background-color: transparent;
+    border-color: $color-accent;
+
+    .text {
+      color: $color-accent;
+    }
+
+    .icon {
+      color: $color-accent;
+    }
+  }
+
+  .active:hover {
+    background-color: $color-accent;
+    border-color: $color;
+
+
+    .text {
+      color: $color;
+    }
+
+    .icon {
+      color: $color;
+    }
+  }
 }
 
 .active {
@@ -57,4 +83,5 @@ $color-accent: var(--orange-gold-base-color);
   color: $color;
   transition: color 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
+
 

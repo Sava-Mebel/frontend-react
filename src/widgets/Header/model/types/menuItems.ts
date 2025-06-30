@@ -2,7 +2,7 @@ import { CatalogGroupID, RoutePath } from 'shared/config/routerConfig/routerConf
 
 export type DropdownItem =
   | { type: 'item'; label: string; to: string }
-  | { type: 'group'; label: string; subItems: { label: string; to: string }[] };
+  | { type: 'group'; label: string; to: string; subItems: { label: string; to: string }[] };
 
 export interface MenuItem {
   label: string;
@@ -19,6 +19,7 @@ export const menuItems: MenuItem[] = [
       {
         type: 'group',
         label: 'Шкафы',
+        to: `/${CatalogGroupID.CABINETS}`,
         subItems: [
           { label: 'Распашные', to: `/${CatalogGroupID.SWING_WARDROBES}` },
           { label: 'Купе', to: `/${CatalogGroupID.SLIDING_WARDROBES}` },

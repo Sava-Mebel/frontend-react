@@ -15,22 +15,29 @@ interface ToolCatalogProps {
 
 export const ToolCatalog = ({ className }: ToolCatalogProps) => {
   const [activeItemId, setActiveItemId] = useState<number>(toolItemLists[0].id);
+  const [autoScroll, setAutoScroll] = useState(true);
+  const pathCatalogGroups = '/catalog/groups';
 
   const activeItem = toolItemLists.find((item) => item.id === activeItemId);
 
   useBackgroundSwitcher(activeItem?.urlBg);
 
   useEffect(() => {
+    if (!autoScroll) return;
+
     const interval = setInterval(() => {
       setActiveItemId((prevId) => {
         const currentIndex = toolItemLists.findIndex((item) => item.id === prevId);
         const nextIndex = (currentIndex + 1) % toolItemLists.length;
         return toolItemLists[nextIndex].id;
       });
-    }, 3000);
+    }, 2500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [autoScroll]);
+
+  const handleMouseEnter = () => setAutoScroll(false);
+  const handleMouseLeave = () => setAutoScroll(true);
 
   return (
     <section className={classNames(cls.ToolCatalog, {}, [className])}>
@@ -46,14 +53,23 @@ export const ToolCatalog = ({ className }: ToolCatalogProps) => {
           эргономики, стиля и ваших привычек
         </p>
 
-        <AppLink className={cls.linkInfo} variant={AppLinkVariant.ROUTE} to={AppRoutes.CATALOG}>
-          <p className={cls.linkText}>Подобрать</p>
+        <AppLink
+          className={cls.linkInfo}
+          variant={AppLinkVariant.ROUTE}
+          to={activeItem?.urlLink ? `${pathCatalogGroups}${activeItem.urlLink}` : AppRoutes.CATALOG}
+        >
+          <p className={cls.linkText}>Подробнее</p>
         </AppLink>
       </div>
 
-      <div className={cls.tool}>
+      <div className={cls.tool} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         {toolItemLists.map((item) => (
-          <ToolItem key={item.id} item={item} isActive={item.id === activeItemId} />
+          <ToolItem
+            key={item.id}
+            item={item}
+            isActive={item.id === activeItemId}
+            onClick={() => setActiveItemId(item.id)}
+          />
         ))}
       </div>
     </section>
