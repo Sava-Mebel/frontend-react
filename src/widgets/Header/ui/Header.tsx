@@ -1,12 +1,15 @@
 import { memo, useState, useRef, useCallback, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Logotype } from 'shared/ui/Logotype/Logotype';
 import HeaderIcon from 'shared/assets/logo/header-logo.svg';
+import HomeIcon from 'shared/assets/icon/home.svg';
 import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 import { DropdownItem, menuItems } from 'widgets/Header/model/types/menuItems';
 import { ContactClientModal } from 'widgets/modal';
+import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 
 import cls from './Header.module.scss';
 
@@ -27,6 +30,7 @@ export const Header = memo((props: HeaderProps) => {
   const [opened, setOpened] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
   const pathCatalogGroups = '/catalog/groups';
 
   const closeDropdown = useCallback(() => {
@@ -133,10 +137,23 @@ export const Header = memo((props: HeaderProps) => {
         <ul className={cls.itemList}>
           <Logotype Logo={HeaderIcon} />
 
+          <AppLink
+            className={classNames(cls.link, {
+              [cls.active]: location.pathname === RoutePath.main,
+              [cls.dimmed]: activeIndex !== null && location.pathname !== RoutePath.main,
+            })}
+            variant={AppLinkVariant.ROUTE}
+            to={RoutePath.main}
+          >
+            <HomeIcon className={cls.homeIcon} />
+            <span className={cls.linkLabel}>Главная</span>
+          </AppLink>
+
           {menuItems.map((item, idx) => {
             const hasDropdown = !!item.dropdownItems;
             const isActive = activeIndex === idx;
             const isDimmed = activeIndex !== null && activeIndex !== idx;
+            const isCurrentPage = location.pathname === item.to;
 
             return (
               <li
@@ -150,14 +167,21 @@ export const Header = memo((props: HeaderProps) => {
                 {item.to ? (
                   <AppLink
                     variant={AppLinkVariant.ROUTE}
-                    className={cls.label}
+                    className={classNames(cls.link, {
+                      [cls.active]: isCurrentPage || isActive, // подсветка лейбла рыжим при открытом дропе или текущей странице
+                    })}
                     to={item.to}
                     onClick={() => handleLabelClick(idx)}
                   >
                     {item.label}
                   </AppLink>
                 ) : (
-                  <h2 className={cls.label} onClick={() => handleLabelClick(idx)}>
+                  <h2
+                    className={classNames(cls.label, {
+                      [cls.active]: isActive, // подсветка лейбла, если дроп открыт
+                    })}
+                    onClick={() => handleLabelClick(idx)}
+                  >
                     {item.label}
                   </h2>
                 )}
