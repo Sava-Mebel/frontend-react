@@ -31,7 +31,7 @@ export const ToolCatalog = ({ className }: ToolCatalogProps) => {
         const nextIndex = (currentIndex + 1) % toolItemLists.length;
         return toolItemLists[nextIndex].id;
       });
-    }, 2500);
+    }, 5500);
 
     return () => clearInterval(interval);
   }, [autoScroll]);
