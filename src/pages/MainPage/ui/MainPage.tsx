@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
-import { ToolCatalog } from 'widgets/ToolCatalog';
 import { useDocumentTitle } from 'shared/lib/hooks/useDocumentTitle/useDocumentTitle';
+import { MainCarousel } from 'features/MainCarousel';
 
 interface MainPageProps {
   className?: string;
@@ -11,7 +11,7 @@ const MainPage = memo((props: MainPageProps) => {
   const { className } = props;
   useDocumentTitle('Главная');
 
-  return <ToolCatalog />;
+  return <MainCarousel />;
 });
 
 MainPage.displayName = 'MainPage';
