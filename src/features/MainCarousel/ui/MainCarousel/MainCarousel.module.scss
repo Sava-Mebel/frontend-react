@@ -1,0 +1,25 @@
+$bg-color: var(--orange-gold-base-color);
+$bg-color-hover: var(--orange-hober-base-color);
+$bg-color-active: var(--white-base-color);
+
+$text-color: var(--white-base-color);
+$text-color-hover: var(--orange-gold-base-color);
+
+.MainCarousel {
+  display:  flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 64px;
+  padding: 74px 90px 64px 90px;
+  width: 100%;
+  max-width: 1440px;
+  height: calc(100vh - var(--footer-height) - var(--header-height));
+  overflow: hidden;
+}
+
+.tool {
+  min-width: 100%;
+  display: flex;
+  z-index: 10;
+  justify-content: space-between;
+}
