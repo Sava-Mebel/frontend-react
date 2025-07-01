@@ -41,9 +41,10 @@ export default [
           extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
         },
         typescript: {},
-        webpack: {
-          config: './webpack.config.ts',
-        },
+        // TODO: добавить специальный линтер конфиг для webpack
+        // webpack: {
+        //   config: './webpack.config.ts',
+        // },
       },
     },
     rules: {
