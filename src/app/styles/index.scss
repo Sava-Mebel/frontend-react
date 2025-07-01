@@ -6,39 +6,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-#background-layer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-}
-
-.bgLayer {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  filter: brightness(0.4);
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, background-size 0.5s ease-in-out;
-  will-change: opacity, background-size;
-}
-
-.bgLayer.active {
-  opacity: 1;
-  background-size: 110%; /* чуть увеличиваем, создавая эффект "приближения" */
-}
-
 .app {
-  //display: flex;
-  //flex-direction: column;
-  //align-items:  center;
   margin: 0 auto;
   width: 100%;
   min-height: 100vh;
