@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
 import { ToolItemType } from 'features/MainCarousel/model/toolItems';
@@ -14,7 +16,7 @@ interface ToolItemProps {
   onMouseLeave?: () => void;
 }
 
-export const ToolItem = (props: ToolItemProps) => {
+export const ToolItem = memo((props: ToolItemProps) => {
   const { item, isActive, onClick, onFocus, onBlur, onMouseEnter, onMouseLeave } = props;
   const { Icon, text } = item;
 
@@ -37,6 +39,6 @@ export const ToolItem = (props: ToolItemProps) => {
       <span className={cls.text}>{text}</span>
     </Button>
   );
-};
+});
 
 ToolItem.displayName = 'ToolItem';

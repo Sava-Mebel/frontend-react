@@ -15,6 +15,9 @@ $text-color-hover: var(--orange-gold-base-color);
   max-width: 1440px;
   height: calc(100vh - var(--footer-height) - var(--header-height));
   overflow: hidden;
+
+  will-change: opacity;
+  backface-visibility: hidden;
 }
 
 .tool {
