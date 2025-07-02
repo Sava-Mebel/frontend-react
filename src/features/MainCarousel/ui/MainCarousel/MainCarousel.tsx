@@ -85,6 +85,7 @@ export const MainCarousel: FC<MainCarouselProps> = ({ className }: { className?:
         description="Наша мастерская более 10 лет создает эксклюзивную мебель для тех, кто ценит безупречные формы, натуральные материалы и продуманные детали..."
         linkText="Подробнее"
         linkUrl={activeItem?.urlLink ? `${pathCatalogGroups}${activeItem.urlLink}` : '/catalog'}
+        activeIndex={activeIndex}
       />
 
       <div className={cls.tool}>
