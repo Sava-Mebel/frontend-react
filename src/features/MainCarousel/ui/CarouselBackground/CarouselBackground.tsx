@@ -28,32 +28,34 @@ export const CarouselBackground = ({
   useEffect(() => {
     const timeline = gsap.timeline();
 
-    // Старый слой уезжает назад
+    // Старый слой уходит назад с мягкостью и лёгким блюром
     timeline.to(prevSlideRef.current, {
       scale: 0.95,
-      opacity: 0.5,
+      opacity: 0.4,
       x: direction === 'left' ? '-5%' : '5%',
-      duration: 0.8,
-      ease: 'power2.inOut',
+      filter: 'blur(4px)',
+      duration: 1.2,
+      ease: 'sine.inOut',
     });
 
-    // Новый слой въезжает поверх
+    // Новый слой въезжает плавно и сверху
     timeline.fromTo(
       activeSlideRef.current,
       {
         x: direction === 'left' ? '100%' : '-100%',
         opacity: 0,
         scale: 1.05,
-        zIndex: 2,
+        filter: 'blur(2px)',
       },
       {
         x: '0%',
         opacity: 1,
         scale: 1,
-        duration: 1,
-        ease: 'power3.out',
+        filter: 'blur(0px)',
+        duration: 1.4,
+        ease: 'expo.out',
       },
-      '<',
+      '-=0.8', // перекрытие анимаций
     );
   }, [activeIndex, direction]);
 
