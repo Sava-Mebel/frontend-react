@@ -139,7 +139,6 @@ export const Header = memo((props: HeaderProps) => {
 
           <AppLink
             className={classNames(cls.link, {
-              [cls.active]: location.pathname === RoutePath.main,
               [cls.dimmed]: activeIndex !== null && location.pathname !== RoutePath.main,
             })}
             variant={AppLinkVariant.ROUTE}
