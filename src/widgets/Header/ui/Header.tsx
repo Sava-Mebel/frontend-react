@@ -144,6 +144,7 @@ export const Header = memo((props: HeaderProps) => {
             })}
             variant={AppLinkVariant.ROUTE}
             to={RoutePath.main}
+            onMouseEnter={closeDropdown}
           >
             <HomeIcon className={cls.homeIcon} />
             <span className={cls.linkLabel}>Главная</span>
