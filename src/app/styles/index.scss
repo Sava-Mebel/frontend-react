@@ -16,8 +16,6 @@ body {
     flex: 1;
     padding-top: 106px;
     background-size: cover;
-    opacity: 0;
-    animation: fadeInBG 1.5s ease-in-out forwards;
     object-fit: cover;
 
     &.with-fixed-footer {
@@ -38,8 +36,4 @@ header {
   display:  flex;
   width: 100%;
   justify-content: center;
-}
-
-@keyframes fadeInBG {
-  to { opacity: 1; }
 }
