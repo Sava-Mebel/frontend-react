@@ -37,7 +37,7 @@ export const MainCarousel: FC<MainCarouselProps> = ({ className }: { className?:
   const changeIndex = (newIndex: number) => {
     if (newIndex === activeIndex) return;
     setPrevIndex(activeIndex);
-    setDirection(newIndex > activeIndex ? 'left' : 'right');
+    setDirection('left');
     setActiveIndex(newIndex);
   };
 
