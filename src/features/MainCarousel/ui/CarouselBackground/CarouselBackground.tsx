@@ -45,7 +45,7 @@ export const CarouselBackground = memo(
         return;
       }
 
-      if (!prevSlideRef.current) return;
+      if (!prevSlideRef.current || !activeSlideRef.current) return;
 
       gsap.set([prevSlideRef.current, activeSlideRef.current], {
         willChange: 'transform, opacity',
@@ -77,9 +77,11 @@ export const CarouselBackground = memo(
       );
 
       return () => {
-        gsap.set([prevSlideRef.current, activeSlideRef.current], {
-          willChange: 'auto',
-        });
+        if (prevSlideRef.current && activeSlideRef.current) {
+          gsap.set([prevSlideRef.current, activeSlideRef.current], {
+            willChange: 'auto',
+          });
+        }
       };
     }, [activeIndex, direction]);
 
