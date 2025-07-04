@@ -50,7 +50,7 @@ export const MainCarouselContent = memo(
         duration: 1,
         ease: 'sine.inOut',
       });
-    }, [activeIndex]);
+    }, []);
 
     return (
       <div className={cls.Content} ref={contentRef}>
