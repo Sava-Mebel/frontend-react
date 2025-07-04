@@ -137,6 +137,15 @@ $color-isActive: var(--orange-gold-base-color);
   }
 }
 
+.link.noActive {
+  color: $color-text !important;
+  font-weight: 600;
+
+  & svg {
+    color: $color-text !important;
+  }
+}
+
 .homeIcon {
   color: inherit;
   transition: color 0.3s ease;

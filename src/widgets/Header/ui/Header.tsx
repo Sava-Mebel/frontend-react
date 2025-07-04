@@ -1,15 +1,13 @@
-import { memo, useState, useRef, useCallback, useEffect } from 'react';
+import React, { memo, useState, useRef, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Logotype } from 'shared/ui/Logotype/Logotype';
 import HeaderIcon from 'shared/assets/logo/header-logo.svg';
-import HomeIcon from 'shared/assets/icon/home.svg';
 import { Button, ButtonThemeTypes } from 'shared/ui/Button/Button';
 import { AppLink, AppLinkVariant } from 'shared/ui/AppLink';
 import { DropdownItem, menuItems } from 'widgets/Header/model/types/menuItems';
 import { ContactClientModal } from 'widgets/modal';
-import { RoutePath } from 'shared/config/routerConfig/routerConfig';
 
 import cls from './Header.module.scss';
 
@@ -31,6 +29,7 @@ export const Header = memo((props: HeaderProps) => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
   const pathCatalogGroups = '/catalog/groups';
 
   const closeDropdown = useCallback(() => {
@@ -84,6 +83,8 @@ export const Header = memo((props: HeaderProps) => {
     setOpened((prevState) => !prevState);
   };
 
+  const isDropdownOpened = activeIndex !== null && !!menuItems[activeIndex]?.dropdownItems;
+
   const renderDropdownItems = (items: DropdownItem[] = []) => (
     <div className={classNames(cls.dropdown, { [cls.opened]: isDropdownOpened })} ref={dropdownRef}>
       {items.map((item, index) => {
@@ -96,6 +97,7 @@ export const Header = memo((props: HeaderProps) => {
               to={`${pathCatalogGroups}${item.to}`}
               onClick={handleLinkClick}
             >
+              {item.Icon && <item.Icon className={cls.dropdownIcon} />}
               {item.label}
             </AppLink>
           );
@@ -104,7 +106,10 @@ export const Header = memo((props: HeaderProps) => {
         if (item.type === 'group') {
           return (
             <ul key={index} className={cls.dropdownGroup}>
-              <span className={cls.dropdownLabel}>{item.label}</span>
+              <span className={cls.dropdownLabel}>
+                {item.Icon && <item.Icon className={cls.dropdownIcon} />}
+                {item.label}
+              </span>
               {item.subItems.map((sub, subIdx) => (
                 <li key={subIdx} className={cls.dropdownItem}>
                   <AppLink
@@ -112,6 +117,7 @@ export const Header = memo((props: HeaderProps) => {
                     to={`${pathCatalogGroups}${sub.to}`}
                     onClick={handleLinkClick}
                   >
+                    {/* Можно добавить иконку sub.Icon, если добавишь в тип */}
                     {sub.label}
                   </AppLink>
                 </li>
@@ -125,8 +131,6 @@ export const Header = memo((props: HeaderProps) => {
     </div>
   );
 
-  const isDropdownOpened = activeIndex !== null && !!menuItems[activeIndex]?.dropdownItems;
-
   return (
     <header
       className={classNames(cls.Header, { [cls[theme]]: theme, [cls.opened]: isDropdownOpened }, [
@@ -136,18 +140,6 @@ export const Header = memo((props: HeaderProps) => {
       <nav className={cls.nav} onMouseLeave={handleMouseLeave}>
         <ul className={cls.itemList}>
           <Logotype Logo={HeaderIcon} />
-
-          <AppLink
-            className={classNames(cls.link, {
-              [cls.dimmed]: activeIndex !== null && location.pathname !== RoutePath.main,
-            })}
-            variant={AppLinkVariant.ROUTE}
-            to={RoutePath.main}
-            onMouseEnter={closeDropdown}
-          >
-            <HomeIcon className={cls.homeIcon} />
-            <span className={cls.linkLabel}>Главная</span>
-          </AppLink>
 
           {menuItems.map((item, idx) => {
             const hasDropdown = !!item.dropdownItems;
@@ -159,7 +151,7 @@ export const Header = memo((props: HeaderProps) => {
               <li
                 key={idx}
                 className={classNames(cls.item, {
-                  [cls.active]: isActive,
+                  [cls.active]: isActive && !item.noActive,
                   [cls.dimmed]: isDimmed,
                 })}
                 onMouseEnter={() => handleMouseEnter(idx)}
@@ -168,20 +160,23 @@ export const Header = memo((props: HeaderProps) => {
                   <AppLink
                     variant={AppLinkVariant.ROUTE}
                     className={classNames(cls.link, {
-                      [cls.active]: isCurrentPage || isActive, // подсветка лейбла рыжим при открытом дропе или текущей странице
+                      [cls.active]: (isCurrentPage || isActive) && !item.noActive,
+                      [cls.noActive]: item.noActive,
                     })}
                     to={item.to}
                     onClick={() => handleLabelClick(idx)}
                   >
-                    {item.label}
+                    {item.Icon && <item.Icon className={cls.menuIcon} />}
+                    <span className={cls.linkLabel}>{item.label}</span>
                   </AppLink>
                 ) : (
                   <h2
                     className={classNames(cls.label, {
-                      [cls.active]: isActive, // подсветка лейбла, если дроп открыт
+                      [cls.active]: isActive,
                     })}
                     onClick={() => handleLabelClick(idx)}
                   >
+                    {item.Icon && <item.Icon className={cls.menuIcon} />}
                     {item.label}
                   </h2>
                 )}

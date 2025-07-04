@@ -1,16 +1,39 @@
+import { JSX, SVGProps } from 'react';
+
 import { CatalogGroupID, RoutePath } from 'shared/config/routerConfig/routerConfig';
+import HomeIcon from 'shared/assets/icon/home.svg';
 
 export type DropdownItem =
-  | { type: 'item'; label: string; to: string }
-  | { type: 'group'; label: string; to: string; subItems: { label: string; to: string }[] };
+  | {
+      type: 'item';
+      label: string;
+      to: string;
+      Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+      noActive?: boolean;
+    }
+  | {
+      type: 'group';
+      label: string;
+      to: string;
+      subItems: { label: string; to: string }[];
+      Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+    };
 
 export interface MenuItem {
   label: string;
   to?: string;
   dropdownItems?: DropdownItem[];
+  Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  noActive?: boolean;
 }
 
 export const menuItems: MenuItem[] = [
+  {
+    label: 'Главная',
+    to: RoutePath.main,
+    Icon: HomeIcon,
+    noActive: true,
+  },
   {
     label: 'Каталог',
     dropdownItems: [
