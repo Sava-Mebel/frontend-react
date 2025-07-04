@@ -23,29 +23,13 @@ export const MainCarouselContent = memo(
     linkText = 'Перейти в каталог',
     linkUrl = '',
     className,
-    activeIndex,
   }: MainCarouselContentProps) => {
     const contentRef = useRef<HTMLDivElement>(null);
-    const prevIndex = useRef<number | undefined>(undefined);
 
     useEffect(() => {
       if (!contentRef.current) return;
 
-      if (prevIndex.current === activeIndex) return;
-
-      prevIndex.current = activeIndex;
-
-      gsap.set(contentRef.current, { opacity: 1 });
-
-      const tl = gsap.timeline();
-
-      tl.to(contentRef.current, {
-        opacity: 0,
-        duration: 0.5,
-        ease: 'sine.inOut',
-      });
-
-      tl.to(contentRef.current, {
+      gsap.to(contentRef.current, {
         opacity: 1,
         duration: 1,
         ease: 'sine.inOut',
