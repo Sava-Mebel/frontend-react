@@ -20,14 +20,36 @@ export const CarouselBackground = memo(
   ({ activeIndex, prevIndex, direction, basePath = '' }: CarouselBackgroundProps) => {
     const activeSlideRef = useRef<HTMLDivElement>(null);
     const prevSlideRef = useRef<HTMLDivElement>(null);
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
-      if (!prevSlideRef.current || !activeSlideRef.current) return;
+      if (!activeSlideRef.current) return;
 
-      // Предварительно скажем браузеру, что будем анимировать transform и opacity
+      if (isFirstRender.current) {
+        isFirstRender.current = false;
+
+        gsap.fromTo(
+          activeSlideRef.current,
+          {
+            x: direction === 'left' ? '100%' : '-100%',
+            opacity: 0,
+          },
+          {
+            x: '0%',
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.out',
+          },
+        );
+
+        return;
+      }
+
+      if (!prevSlideRef.current) return;
+
       gsap.set([prevSlideRef.current, activeSlideRef.current], {
         willChange: 'transform, opacity',
-        force3D: true, // включаем GPU ускорение
+        force3D: true,
       });
 
       const timeline = gsap.timeline();
@@ -43,7 +65,6 @@ export const CarouselBackground = memo(
         {
           x: direction === 'left' ? '100%' : '-100%',
           opacity: 0,
-          transform: 'translate3d(0, 0, 0)',
         },
         {
           x: '0%',
@@ -56,24 +77,33 @@ export const CarouselBackground = memo(
       );
 
       return () => {
-        // Очищаем will-change, чтобы не было постоянной нагрузки
-        gsap.set([prevSlideRef.current, activeSlideRef.current], { willChange: 'auto' });
+        gsap.set([prevSlideRef.current, activeSlideRef.current], {
+          willChange: 'auto',
+        });
       };
     }, [activeIndex, direction]);
 
     return (
-      <div className={cls.carouselBackground}>
-        <div
-          ref={prevSlideRef}
-          className={cls.slide}
-          style={{
-            background: `linear-gradient(0deg, rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${joinPaths(
-              basePath,
-              toolItemLists[prevIndex].urlBg,
-            )}) center / cover no-repeat`,
-            zIndex: 1,
-          }}
-        />
+      <div
+        className={cls.carouselBackground}
+        style={{
+          backgroundColor: isFirstRender.current ? '#2b2b2b' : 'transparent',
+        }}
+      >
+        {!isFirstRender.current && (
+          <div
+            ref={prevSlideRef}
+            className={cls.slide}
+            style={{
+              background: `linear-gradient(0deg, rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${joinPaths(
+                basePath,
+                toolItemLists[prevIndex].urlBg,
+              )}) center / cover no-repeat`,
+              zIndex: 1,
+            }}
+          />
+        )}
+
         <div
           ref={activeSlideRef}
           className={cls.slide}
