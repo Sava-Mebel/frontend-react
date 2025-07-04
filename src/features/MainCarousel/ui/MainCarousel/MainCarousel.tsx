@@ -20,6 +20,22 @@ export const MainCarousel: FC<MainCarouselProps> = ({ className }: { className?:
   const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        setAutoScroll(false);
+      } else if (document.visibilityState === 'visible') {
+        setAutoScroll(true);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!autoScroll) return;
 
     const interval = setInterval(() => {
