@@ -27,6 +27,15 @@ export const CarouselBackground = memo(
 
       if (isFirstRender.current) {
         isFirstRender.current = false;
+        gsap.set(activeSlideRef.current, {
+          x: '0%',
+          opacity: 1,
+        });
+        return;
+      }
+
+      if (isFirstRender.current) {
+        isFirstRender.current = false;
 
         gsap.fromTo(
           activeSlideRef.current,
