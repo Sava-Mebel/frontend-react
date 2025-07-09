@@ -12,3 +12,5 @@ root.render(
     <App />
   </BrowserRouter>,
 );
+
+console.log('TEST: CI|CD');
