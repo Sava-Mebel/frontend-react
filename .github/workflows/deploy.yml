@@ -60,6 +60,7 @@ jobs:
             sudo chown -R www-data:www-data ${{ secrets.DEPLOY_PATH }}
             sudo find ${{ secrets.DEPLOY_PATH }} -type d -exec chmod 755 {} \;
             sudo find ${{ secrets.DEPLOY_PATH }} -type f -exec chmod 644 {} \;
+            script: sudo systemctl reload nginx
 
       # - name: 🔁 Reload nginx (опционально)
       #   uses: appleboy/ssh-action@v0.1.7
