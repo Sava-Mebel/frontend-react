@@ -177,6 +177,16 @@ $color-isActive: var(--orange-gold-base-color);
   }
 }
 
+.btn {
+  display: flex;
+  align-items:  center;
+  height: 40px;
+
+  &.label {
+    font-size: 13.333px;
+  }
+}
+
 @keyframes fadeInUp {
 to {
     opacity: 1;

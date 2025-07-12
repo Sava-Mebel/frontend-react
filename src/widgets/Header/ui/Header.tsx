@@ -186,8 +186,8 @@ export const Header = memo((props: HeaderProps) => {
             );
           })}
 
-          <Button theme={ButtonThemeTypes.OUTLINE} onClick={handleModalOpen}>
-            Позвонить мне
+          <Button className={cls.btn} theme={ButtonThemeTypes.OUTLINE} onClick={handleModalOpen}>
+            <span className={cls.label}>Позвонить мне</span>
           </Button>
         </ul>
       </nav>
