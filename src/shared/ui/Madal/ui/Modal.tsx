@@ -29,7 +29,7 @@ export const Modal = (props: ModalProps) => {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
 
   return (
     <div className={cls.overlay} onClick={onClose}>

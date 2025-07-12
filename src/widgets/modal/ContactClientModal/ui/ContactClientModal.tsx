@@ -35,7 +35,7 @@ export const ContactClientModal = (props: ContactClientModalProps) => {
         </p>
 
         <p>
-          📞 Позвоните нам:
+          📞 Позвоните нам:&nbsp;
           <AppLink className={cls.phone} variant={AppLinkVariant.EXTERNAL} href="tel:+7XXXXXXXXXX">
             +7 XXX XXX-XX-XX
           </AppLink>
@@ -44,7 +44,6 @@ export const ContactClientModal = (props: ContactClientModalProps) => {
         <p>💡 Заявки до 18:00 обрабатываем сегодня!</p>
 
         <div className={cls.socials}>
-          <span>Наши работы:</span>
           <div className={cls.links}>
             <AppLink
               className={cls.link}
@@ -53,7 +52,7 @@ export const ContactClientModal = (props: ContactClientModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram
+              <span className={cls.instagram}>Instagram</span>
             </AppLink>
             <AppLink
               className={cls.link}
@@ -62,7 +61,7 @@ export const ContactClientModal = (props: ContactClientModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              ВКонтакте
+              <span className={cls.vk}>ВКонтакте</span>
             </AppLink>
             <AppLink
               className={cls.link}
@@ -71,7 +70,7 @@ export const ContactClientModal = (props: ContactClientModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Telegram-канал
+              <span className={cls.tg}>Telegram-канал</span>
             </AppLink>
           </div>
         </div>

@@ -1,20 +1,20 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   color: rgba(34, 37, 43, 0.7);
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 20px;
 
   .link1 {
-    color: var(--orange-gold-base-color);
+    color: #FF6A00;
     font-weight: 600;
     transition: opacity 0.2s ease-in;
 
     &:hover {
-      opacity:  0.7;
+      opacity:  0.8;
     }
   }
 
@@ -23,7 +23,7 @@
 
     &:hover {
       transition: opacity 0.2s ease-in;
-      opacity:  0.7;
+      opacity:  0.8;
     }
   }
 }
@@ -36,19 +36,30 @@
   .links {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
 
     .link {
       position: relative;
       color: rgba(34, 37, 43, 0.70);
       font-size: 16px;
       font-style: normal;
-      font-weight: 800;
+      font-weight: 600;
       line-height: 20px;
+
+      & .instagram{
+        color: rgba(115, 19, 84, 0.70);
+      }
+
+      & .vk {
+        color: rgba(16, 53, 128, 0.70);
+      }
+
+      & .tg {
+        color: #039BE5;
+      }
 
       &:not(:first-child)::before {
         content: '|';
-        margin: 0 8px;
+        margin: 0 4px;
       }
     }
 
