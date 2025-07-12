@@ -96,9 +96,6 @@ export const MainCarousel: FC<MainCarouselProps> = ({ className }: { className?:
 
       <MainCarouselContent
         className={cls.content}
-        title="Savva Mebel"
-        subTitle="Создаём мебель вашей мечты — от эскиза до воплощения"
-        description="Наша мастерская более 10 лет создает эксклюзивную мебель для тех, кто ценит безупречные формы, натуральные материалы и продуманные детали..."
         linkText="Подробнее"
         linkUrl={activeItem?.urlLink ? `${pathCatalogGroups}${activeItem.urlLink}` : '/catalog'}
         activeIndex={activeIndex}

@@ -16,16 +16,8 @@ $text-color-hover: var(--orange-gold-base-color);
   text-align: center;
   opacity: 0;
 
-  & .title {
-    color: #FFFFFF;
-    text-align: center;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 55px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 60px;
-    letter-spacing: 2.75px;
-    margin-bottom: 12px;
+  & .logo {
+    margin-bottom: 24px;
   }
 
   & .subTitle {
@@ -34,25 +26,21 @@ $text-color-hover: var(--orange-gold-base-color);
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 24px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 131.9%;
     margin-bottom: 16px;
+    text-transform: uppercase
   }
 
   & .description {
-    color: var(--gray-muted-color);
+    color: var(--gray-3-muted-color);
     text-align: center;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 20px;
     font-style: normal;
-    font-weight: 300;
-    line-height: 131.9%; /* 26.38px */
+    font-weight: 400;
+    line-height: 131.9%;
     margin-bottom: 32px;
-  }
-
-  & .title,
-  & .subTitle {
-    text-transform: uppercase
   }
 
   & .linkInfo {
