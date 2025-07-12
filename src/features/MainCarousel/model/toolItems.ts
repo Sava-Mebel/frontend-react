@@ -1,8 +1,12 @@
 import { JSX, SVGProps } from 'react';
 
-import CabinetDrawerIcon from 'shared/assets/toolCategory/cabinet-and-drawer.svg';
-import KitchenFurnitureIcon from 'shared/assets/toolCategory/kitchen-furniture.svg';
-import FurnitureIcon from 'shared/assets/toolCategory/furniture.svg';
+import kitchenSetsIcon from 'shared/assets/toolCategory/kitchenSets.svg';
+import HallwaysIcon from 'shared/assets/toolCategory/hallways.svg';
+import CabinetsIcon from 'shared/assets/toolCategory/cabibets.svg';
+import WardrobesIcon from 'shared/assets/toolCategory/wardrobes.svg';
+import TablesIcon from 'shared/assets/toolCategory/tables.svg';
+import SofasIcon from 'shared/assets/toolCategory/sofas.svg';
+import ChairsIcon from 'shared/assets/toolCategory/сhairs.svg';
 import { CatalogGroupID } from 'shared/config/routerConfig/routerConfig';
 
 export interface ToolItemType {
@@ -19,49 +23,49 @@ export const toolItemLists: ToolItemType[] = [
   {
     id: 1,
     text: 'Кухонные гарнитуры'.replace(' ', '\n'),
-    Icon: KitchenFurnitureIcon,
+    Icon: kitchenSetsIcon,
     urlBg: `${BASE_PATH_MEDIA}/KitchenSet.jpg`,
     urlLink: `/${CatalogGroupID.KITCHEN_SETS}`,
   },
   {
     id: 2,
     text: 'Прихожие',
-    Icon: FurnitureIcon,
+    Icon: HallwaysIcon,
     urlBg: `${BASE_PATH_MEDIA}/Hallway.jpg`,
     urlLink: `/${CatalogGroupID.HALLWAYS}`,
   },
   {
     id: 3,
     text: 'Шкафы',
-    Icon: CabinetDrawerIcon,
+    Icon: CabinetsIcon,
     urlBg: `${BASE_PATH_MEDIA}/Cabinets.jpeg`,
     urlLink: `/${CatalogGroupID.BEDROOM_FURNITURE}`,
   },
   {
     id: 4,
     text: 'Гардеробная',
-    Icon: CabinetDrawerIcon,
+    Icon: WardrobesIcon,
     urlBg: `${BASE_PATH_MEDIA}/Wardrobes.jpg`,
     urlLink: `/${CatalogGroupID.WARDROBE_BED}`,
   },
   {
     id: 5,
     text: 'Столы',
-    Icon: CabinetDrawerIcon,
+    Icon: TablesIcon,
     urlBg: `${BASE_PATH_MEDIA}/Tables.png`,
     // urlLink: `/${CatalogGroupID.}`, пока не понятно
   },
   {
     id: 6,
     text: 'Диваны',
-    Icon: CabinetDrawerIcon,
+    Icon: SofasIcon,
     urlBg: `${BASE_PATH_MEDIA}/Sofas.jpg`,
     // urlLink: `/${CatalogGroupID.}`, пока не понятно
   },
   {
     id: 7,
     text: 'Стулья',
-    Icon: CabinetDrawerIcon,
+    Icon: ChairsIcon,
     urlBg: `${BASE_PATH_MEDIA}/Chairs.jpg`,
     // urlLink: `/${CatalogGroupID.}`, пока не понятно
   },
